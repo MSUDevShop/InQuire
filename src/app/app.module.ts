@@ -6,6 +6,7 @@ import { MyApp } from './app.component';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
+import { QuestionPage } from '../pages/question/question';
 import { TabsPage } from '../pages/tabs/tabs';
 
 //Apollo config
@@ -22,6 +23,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     ContactPage,
     HomePage,
+    QuestionPage,
     TabsPage
   ],
   imports: [
@@ -35,6 +37,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     ContactPage,
     HomePage,
+    QuestionPage,
     TabsPage
   ],
   providers: [
