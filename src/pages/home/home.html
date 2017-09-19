@@ -1,10 +1,28 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>Questions</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+
+  <!-- <form [formGroup]="userQuestion" (ngSubmit)="submitQuestion()"> -->
+    <ion-item>
+      <ion-label>Ask Question</ion-label>
+      <ion-input type="text" [(ngModel)]="question"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-range min="-200" max="200" [(ngModel)]="value">
+        <ion-icon range-left small>$1</ion-icon>
+        <ion-icon range-right small>$100</ion-icon>
+      </ion-range>
+    </ion-item>
+
+    <button ion-button type="submit">Submit</button>
+  <!-- </form>
+
+
   <ion-list>
     <ion-list-header>
       Questions
