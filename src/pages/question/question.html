@@ -3,7 +3,7 @@
       <ion-title>Questions</ion-title>
     </ion-navbar>
   </ion-header>
-  
+
   <ion-content padding>
     <form (ngSubmit)="submitQuestion()">
       <ion-item>
@@ -19,18 +19,8 @@
         <div class="money">
             <span>{{newQuestion.value}}</span>
         </div>
-      
+
       <button ion-button type="submit" block>Add Todo</button>
     </form>
-  
-    <ion-list>
-      <ion-list-header>
-        Questions
-      </ion-list-header>
-      <ion-item *ngFor="let question of questions">
-        <span>{{question.question}}?</span>
-        <ion-badge item-end>{{question.value}}</ion-badge>
-      </ion-item>
-    </ion-list>
   
   </ion-content>

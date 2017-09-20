@@ -20,24 +20,7 @@ export class QuestionPage {
   }
 
   constructor(public navCtrl: NavController,
-              public apollo: Angular2Apollo
-             ) {
-    this.apollo.query({
-      query: gql`
-        query {
-          allQuestions {
-            id
-            question
-            value
-          }
-        }
-      `
-    }).toPromise().then(({data}) => {
-      this.questions = data;
-      this.questions = this.questions.allQuestions;
-    })
-
-  }
+              public apollo: Angular2Apollo) {}
 
   submitQuestion() {
     this.apollo.mutate({
