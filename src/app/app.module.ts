@@ -4,12 +4,14 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 //pages
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
+import { InquirePage } from '../pages/inquire/inquire';
+import { ProfilePage } from '../pages/profile/profile';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
+import { NotificationsPage } from '../pages/notifications/notifications';
+import { StoriesPage } from '../pages/stories/stories';
 
 //Apollo config
 import { provideClient } from './client';
@@ -25,12 +27,14 @@ import { Camera } from '@ionic-native/camera';
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
+    InquirePage,
+    ProfilePage,
     HomePage,
     TabsPage,
     LoginPage,
-    SignupPage
+    SignupPage,
+    NotificationsPage,
+    StoriesPage
   ],
   imports: [
     ApolloModule.withClient(provideClient),
@@ -40,12 +44,14 @@ import { Camera } from '@ionic-native/camera';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
+    InquirePage,
+    ProfilePage,
     HomePage,
     TabsPage,
     LoginPage,
-    SignupPage
+    SignupPage,
+    NotificationsPage,
+    StoriesPage
   ],
   providers: [
     Camera,

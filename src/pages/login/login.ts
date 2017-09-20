@@ -3,6 +3,7 @@ import { NavController, ToastController } from 'ionic-angular';
 
 import { SignupPage } from '../signup/signup';
 import { HomePage } from '../home/home';
+import { TabsPage } from '../tabs/tabs';
 
 import { Angular2Apollo } from 'angular2-apollo';
 import gql from 'graphql-tag';
@@ -54,7 +55,7 @@ export class LoginPage {
       // });
 
     }).then(() => {
-      this.navCtrl.push(HomePage);
+      this.navCtrl.push(TabsPage);
     }).catch(() => {
     console.log('view was not dismissed');
     this.showToast();

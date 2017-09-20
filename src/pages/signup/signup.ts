@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, ToastController, Platform} from 'ionic-angular';
 
-import { HomePage } from '../home/home';
+import { TabsPage } from '../tabs/tabs';
 
 import { Camera, CameraOptions } from '@ionic-native/camera';
 
@@ -70,7 +70,7 @@ export class SignupPage {
               this.userInfo.data = data
               console.log(this.userInfo.data.signinUser.token);
               window.localStorage.setItem('graphcoolToken', this.userInfo.data.signinUser.token);
-              this.navCtrl.setRoot(HomePage);
+              this.navCtrl.setRoot(TabsPage);
             }, (errors) => {
                 console.log(errors);
                 if (errors == "GraphQL error: No user found with that information") {
