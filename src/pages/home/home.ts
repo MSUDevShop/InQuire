@@ -19,6 +19,14 @@ export class HomePage {
           allQuestions {
             id
             question
+            influencer {
+              id
+              fullName
+            }
+            user{
+              id
+              fullName
+            }
           }
         }
       `

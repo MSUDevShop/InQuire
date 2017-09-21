@@ -1,3 +1,14 @@
 page-home {
+  #influencer, #asker, #views {
+    color: map-get($colors, primary);
+  }
+  ion-note {
+    font-size: 0.9em;
+    margin: 0 !important;
+  }
+  #question {
+    font-size: 1.1em;
+    color: black !important;
+  }
 
 }
