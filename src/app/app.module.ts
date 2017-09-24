@@ -3,11 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
+//pages
+import { InquirePage } from '../pages/inquire/inquire';
+import { ProfilePage } from '../pages/profile/profile';
 import { HomePage } from '../pages/home/home';
 import { QuestionPage } from '../pages/question/question';
 import { TabsPage } from '../pages/tabs/tabs';
+import { LoginPage } from '../pages/login/login';
+import { SignupPage } from '../pages/signup/signup';
+import { NotificationsPage } from '../pages/notifications/notifications';
+import { StoriesPage } from '../pages/stories/stories';
 
 //Apollo config
 import { provideClient } from './client';
@@ -17,14 +22,21 @@ import { ApolloModule } from 'angular2-apollo';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { Camera } from '@ionic-native/camera';
+
+
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
+    InquirePage,
+    ProfilePage,
     HomePage,
     QuestionPage,
-    TabsPage
+    TabsPage,
+    LoginPage,
+    SignupPage,
+    NotificationsPage,
+    StoriesPage
   ],
   imports: [
     ApolloModule.withClient(provideClient),
@@ -34,13 +46,18 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
+    InquirePage,
+    ProfilePage,
     HomePage,
     QuestionPage,
-    TabsPage
+    TabsPage,
+    LoginPage,
+    SignupPage,
+    NotificationsPage,
+    StoriesPage
   ],
   providers: [
+    Camera,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
