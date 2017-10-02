@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
+import { QuestionPage } from '../question/question';
+
 import { Angular2Apollo } from 'angular2-apollo';
 import gql from 'graphql-tag';
 
@@ -11,7 +13,9 @@ import gql from 'graphql-tag';
 })
 export class InquirePage {
 
-influencers = <any>[];
+  influencers = <any>[];
+  pushPage: any;
+  params: Object;
 
   constructor(public navCtrl: NavController,
               public apollo: Angular2Apollo) {
@@ -38,6 +42,8 @@ influencers = <any>[];
   }
 
 
-
+  openQuestionPage(influencer) {
+    this.navCtrl.push(QuestionPage, { influencer: influencer });
+  }
 
 }

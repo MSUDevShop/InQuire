@@ -15,14 +15,16 @@
 
 
   <ion-list>
-    <ion-item class="featured">
-      <span class="profile-icon"></span>
-    </ion-item>
-    <ion-item *ngFor="let influencer of influencers">
-      <span class="profile-icon">
+    <!-- <ion-item class="featured"> -->
+      <!-- <span class="profile-icon"></span> -->
+    <!-- </ion-item> -->
+    <button ion-item
+            *ngFor="let influencer of influencers" 
+            (click)="openQuestionPage(influencer)">
+      <ion-avatar item-start>
         <img src={{influencer.profilePic}}/>
-      </span>
-      <span class="influencer-name">{{influencer.fullName}} </span>
-    </ion-item>
+      </ion-avatar>
+      <h2>{{influencer.fullName}} </h2>
+    </button>
   </ion-list>
 </ion-content>

@@ -1,26 +1,33 @@
 <ion-header>
     <ion-navbar>
-      <ion-title>Questions</ion-title>
+      <ion-title>Ask {{influencer.fullName}}</ion-title>
     </ion-navbar>
   </ion-header>
 
   <ion-content padding>
+    
     <form (ngSubmit)="submitQuestion()">
       <ion-item>
         <ion-label floating>Ask Question</ion-label>
         <ion-input type="text" [(ngModel)]="newQuestion.text" name="text"></ion-input>
       </ion-item>
       <ion-item>
+        <!-- <div style="width: 200px"> -->
           <ion-range min="1" max="200" [(ngModel)]="newQuestion.value" name="value" color="secondary">
             <ion-label range-left>$1</ion-label>
             <ion-label range-right>$200</ion-label>
+            <ion-label range-right style="cursor: pointer;">
+                <ion-icon name="more" (click)="customValue()"></ion-icon>
+            </ion-label>
           </ion-range>
-        </ion-item>
+        <!-- </div> -->
+      </ion-item>
+
         <div class="money">
             <span>{{newQuestion.value}}</span>
         </div>
 
-      <button ion-button type="submit" block>Add Todo</button>
+      <button ion-button type="submit" block>Ask my question!</button>
     </form>
-  
+
   </ion-content>
