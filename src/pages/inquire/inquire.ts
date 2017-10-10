@@ -1,3 +1,10 @@
+/*
+Author: Yash Vesikar
+Created On: 10/9/2017
+
+CHANGELOG:
+
+*/
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
@@ -13,36 +20,41 @@ import gql from 'graphql-tag';
 })
 export class InquirePage {
 
-  influencers = <any>[];
-  pushPage: any;
-  params: Object;
+  influencers = <any>[]; // These are all the influencers the current user "follows"
+  // pushPage: any;
+  // params: Object; //
 
   constructor(public navCtrl: NavController,
               public apollo: Angular2Apollo) {
 
-      this.apollo.query({
-        query: gql`
-          query {
-            user{
-              following {
-                id
-                fullName
-                profilePic
-                userName
-              }
+                //Query for influencers the user follows
+                this.apollo.query({
+                  query: gql`
+                    query {
+                      user{
+                        following {
+                          id
+                          fullName
+                          profilePic
+                          userName
+                        }
+                      }
+                    }
+                  `
+                }).toPromise().then(({data}) => {
+                  this.influencers = data;
+                  // Sets an array of influencers the user follows to this.influencers
+                  this.influencers = this.influencers.user.following;
+                })
+
             }
-          }
-        `
-      }).toPromise().then(({data}) => {
-        this.influencers = data;
-        this.influencers = this.influencers.user.following;;
-        console.log(this.influencers)
-      })
 
-  }
-
-
+  // onclick function that pushs a unique influencers page onto the screen
   openQuestionPage(influencer) {
+    /*
+    influencer param is the influencer that the user selected
+    influencer : object[influencer]
+    */
     this.navCtrl.push(QuestionPage, { influencer: influencer });
   }
 

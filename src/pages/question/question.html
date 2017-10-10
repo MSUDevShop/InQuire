@@ -11,16 +11,15 @@
         <ion-label floating>Ask Question</ion-label>
         <ion-input type="text" [(ngModel)]="newQuestion.text" name="text"></ion-input>
       </ion-item>
+      <!-- Slider of values between 1-100 -->
       <ion-item>
-        <!-- <div style="width: 200px"> -->
           <ion-range min="1" max="200" [(ngModel)]="newQuestion.value" name="value" color="secondary">
             <ion-label range-left>$1</ion-label>
             <ion-label range-right>$200</ion-label>
             <ion-label range-right style="cursor: pointer;">
-                <ion-icon name="more" (click)="customValue()"></ion-icon>
+                <ion-icon name="more" (click)="customValue()"></ion-icon> <!-- Custom value input -->
             </ion-label>
           </ion-range>
-        <!-- </div> -->
       </ion-item>
 
         <div class="money">

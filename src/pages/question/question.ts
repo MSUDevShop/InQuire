@@ -1,9 +1,17 @@
+/*
+  Author: Yash Vesikar
+  Created On: 10/9/2017
+
+  CHANGELOG:
+
+*/
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-
 import { FormsModule }   from '@angular/forms'
+
 import { Angular2Apollo } from 'angular2-apollo';
 import gql from 'graphql-tag';
+
 import 'rxjs/add/operator/toPromise';
 
 @IonicPage()
@@ -11,15 +19,20 @@ import 'rxjs/add/operator/toPromise';
   selector: 'page-question',
   templateUrl: 'question.html',
 })
-export class QuestionPage {
 
-  user = <any>{};
-  userId: any;
+export class QuestionPage {
+/*
+  This page is dynamically created when a user selects a influencer to ask a question to
+  input NavParams is a influencer object
+*/
+  user = <any>{}; // Object to hold user data from gql (basically a temp variable)
+  userId: any; // The current users ID
 
   constructor(public navCtrl: NavController,
               public apollo: Angular2Apollo,
               public navParams: NavParams,
               public alertCtrl: AlertController) {
+                // gql Query that returns the current users ID
                 this.apollo.query({
                   query: gql`
                     query {
@@ -30,27 +43,32 @@ export class QuestionPage {
                   `
                 }).toPromise().then(({data}) => {
                   this.user = data;
+                  // Convoluted way of storing the users ID
                   this.userId = this.user.user.id;
                 });
               }
 
-    influencer = this.navParams.get("influencer");
-
+    influencer = this.navParams.get("influencer"); // Influencer Data
+    // New Question data
     newQuestion = {
       text: "",
       value:[].toString(),
-      // influencerId: this.influencer.id,
       userId: this.user.id
     }
 
   validate() {
+    /*
+      Function is validation for new questions
+      Checks if question and value are proper and within range
+      ***** Need to add feedback elements if question or value is improper *****
+    */
     let input = this.newQuestion;
     if(input.text === ""){
-      console.log("Throw incorrect question error");
+      console.log("Throw incorrect question error"); // Need to turn input area red w/ error message
     } else if(isNaN(parseInt(input.value)) === true){
-      console.log("Throw incorrect value input");
+      console.log("Throw incorrect value input"); // Need to turn value red w/ error message
     } else if (parseInt(input.value) <= 0){
-      console.log("Throw value can not be less than 1");
+      console.log("Throw value can not be less than 1"); // Need to turn value red w/ error message
     } else {
       return true;
     }
@@ -58,7 +76,11 @@ export class QuestionPage {
   }
 
   submitQuestion() {
-    if (this.validate() === true){
+    /*
+      Submit Question Function makes gql mutation if all input is valid
+    */
+    if (this.validate() === true) {
+      // gql mutation for sending user question to influencer
       this.apollo.mutate({
         mutation: gql`
         mutation createQuestion($question:String!, $value: String!, $influencerId:ID, $userId: ID){
@@ -78,11 +100,14 @@ export class QuestionPage {
           userId: this.userId
         }
       });
-      console.log(this.userId);
     }
   }
 
   customValue() {
+    /*
+      Function for custom value input
+    */
+    // Creates a input alert/modal
     let prompt = this.alertCtrl.create({
       title: 'Custom Value',
       message: "Enter a custom value for your question",
