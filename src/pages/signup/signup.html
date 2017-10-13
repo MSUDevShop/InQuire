@@ -19,6 +19,9 @@
 
   <!-- input fields -->
   <ion-list text-center>
+    <ion-item>
+      <button ion-button color="dark" (tap)="influencerSignup()" clear>I'm an influencer</button>
+    </ion-item>
     <ion-item padding>
       <ion-icon item-left name="person"></ion-icon>
       <ion-input [(ngModel)]="fullName" type="text" placeholder="Full Name"></ion-input>
