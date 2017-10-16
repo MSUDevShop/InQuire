@@ -1,0 +1,66 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Settings</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="vertical-align-content" text-center>
+    <ion-list>
+      <ion-list-header>
+        Profile
+      </ion-list-header>
+      <ion-item>
+         <ion-label>Name</ion-label>
+         <ion-note item-right>
+          Name
+          </ion-note>
+      </ion-item>
+      <ion-item>
+         <ion-label>Username</ion-label>
+         <ion-note item-right>
+          Username
+          </ion-note>
+      </ion-item>
+    </ion-list>
+
+    <ion-list>
+      <ion-list-header>
+        Push Notifications - Coming soon!
+      </ion-list-header>
+      <ion-item>
+        <ion-label>Messages</ion-label>
+        <ion-toggle disabled checked="true"></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label>In-App Vibrations</ion-label>
+        <ion-toggle disabled checked="true"></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label>In-App Sounds</ion-label>
+        <ion-toggle disabled></ion-toggle>
+      </ion-item>
+    </ion-list>
+
+    <ion-list>
+      <ion-list-header>
+        Legal
+      </ion-list-header>
+      <button ion-item>
+        <ion-label>Privacy Policy</ion-label>
+      </button>
+      <button ion-item>
+        <ion-label>Terms of Service</ion-label>
+      </button>
+    </ion-list>
+
+    <ion-list padding>
+      <button ion-button block round (tap)="logoutUser()" text-center>
+        Logout
+      </button>
+    </ion-list>
+
+
+</ion-content>

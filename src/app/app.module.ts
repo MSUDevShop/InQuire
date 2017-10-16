@@ -14,6 +14,7 @@ import { SignupPage } from '../pages/signup/signup';
 import { NotificationsPage } from '../pages/notifications/notifications';
 import { StoriesPage } from '../pages/stories/stories';
 import { InfluencerSignupPage } from '../pages/influencer-signup/influencer-signup';
+import { SettingsPage } from '../pages/settings/settings';
 
 //Apollo config
 import { provideClient } from './client';
@@ -44,7 +45,8 @@ import { FormBuilder } from '@angular/forms';
     SignupPage,
     InfluencerSignupPage,
     NotificationsPage,
-    StoriesPage
+    StoriesPage,
+    SettingsPage
   ],
   imports: [
     ApolloModule.withClient(provideClient),
@@ -64,7 +66,8 @@ import { FormBuilder } from '@angular/forms';
     SignupPage,
     InfluencerSignupPage,
     NotificationsPage,
-    StoriesPage
+    StoriesPage,
+    SettingsPage
   ],
   providers: [
     Camera,
