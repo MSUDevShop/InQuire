@@ -14,10 +14,8 @@ import { NotificationsPage } from '../notifications/notifications';
 export class TabsPage {
 
   tab1Root = HomePage;
-  tab2Root = ProfilePage;
   tab3Root = InquirePage;
-  tab4Root = NotificationsPage;
-  tab5Root = StoriesPage;
+  tab5Root = ProfilePage;
 
   constructor() {
 

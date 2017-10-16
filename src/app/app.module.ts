@@ -19,6 +19,9 @@ import { InfluencerSignupPage } from '../pages/influencer-signup/influencer-sign
 import { provideClient } from './client';
 import { ApolloModule } from 'angular2-apollo';
 
+//Modules
+import { Autosize } from '../components/autosize';
+
 //Providers
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -31,6 +34,7 @@ import { FormBuilder } from '@angular/forms';
 @NgModule({
   declarations: [
     MyApp,
+    Autosize,
     InquirePage,
     ProfilePage,
     HomePage,

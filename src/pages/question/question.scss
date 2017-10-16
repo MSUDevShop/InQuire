@@ -5,5 +5,8 @@ page-question {
         text-align: center;
         margin: 10px;
     }
-    
+    .charLeft {
+      color: map-get($colors, primary);
+    }
+
 }

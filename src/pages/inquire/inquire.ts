@@ -31,20 +31,21 @@ export class InquirePage {
                 this.apollo.query({
                   query: gql`
                     query {
-                      user{
-                        following {
-                          id
-                          fullName
-                          profilePic
-                          userName
-                        }
+                      allUsers(filter: {
+                        influencer: true
+                      }) {
+                        id
+                        fullName
+                        profilePic
                       }
                     }
                   `
                 }).toPromise().then(({data}) => {
                   this.influencers = data;
+                  this.influencers = this.influencers.allUsers;
+                  console.log(data);
                   // Sets an array of influencers the user follows to this.influencers
-                  this.influencers = this.influencers.user.following;
+                  // this.influencers = this.influencers.user.following;
                 })
 
             }

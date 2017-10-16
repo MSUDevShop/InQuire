@@ -38,13 +38,16 @@ export class QuestionPage {
                     query {
                       user{
                         id
+                        profilePic
+                        fullName
                       }
                     }
                   `
                 }).toPromise().then(({data}) => {
                   this.user = data;
+                  this.user = this.user.user;
                   // Convoluted way of storing the users ID
-                  this.userId = this.user.user.id;
+                  this.userId = this.user.id;
                 });
               }
 
