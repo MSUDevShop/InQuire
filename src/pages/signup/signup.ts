@@ -9,8 +9,6 @@ import { Angular2Apollo } from 'angular2-apollo';
 import gql from 'graphql-tag';
 import 'rxjs/add/operator/toPromise';
 
-import { InfluencerSignupPage } from '../influencer-signup/influencer-signup';
-
 @Component({
   selector: 'page-signup',
   templateUrl: 'signup.html'
@@ -193,10 +191,6 @@ export class SignupPage {
         this.imageUri = base64Image;
       })
     }
-  }
-
-  influencerSignup() {
-    this.navCtrl.push(InfluencerSignupPage);
   }
 
 }

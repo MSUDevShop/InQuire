@@ -13,7 +13,6 @@ import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { NotificationsPage } from '../pages/notifications/notifications';
 import { StoriesPage } from '../pages/stories/stories';
-import { InfluencerSignupPage } from '../pages/influencer-signup/influencer-signup';
 import { SettingsPage } from '../pages/settings/settings';
 
 //Apollo config
@@ -43,7 +42,6 @@ import { FormBuilder } from '@angular/forms';
     TabsPage,
     LoginPage,
     SignupPage,
-    InfluencerSignupPage,
     NotificationsPage,
     StoriesPage,
     SettingsPage
@@ -64,7 +62,6 @@ import { FormBuilder } from '@angular/forms';
     TabsPage,
     LoginPage,
     SignupPage,
-    InfluencerSignupPage,
     NotificationsPage,
     StoriesPage,
     SettingsPage
