@@ -19,8 +19,12 @@
 
   <!-- input fields -->
   <ion-list text-center>
-    <ion-item>
-      <button ion-button color="dark" (tap)="influencerSignup()" clear>I'm an influencer</button>
+    <ion-item *ngIf="!isInfluencer">
+      <button ion-button color="dark" (tap)="isInfluencer = !isInfluencer" clear>I'm an influencer</button>
+    </ion-item>
+    <ion-item padding *ngIf="isInfluencer">
+      <ion-icon item-left name="color-wand"></ion-icon>
+      <ion-input [(ngModel)]="influencerCode" type="text" placeholder="Access Code"></ion-input>
     </ion-item>
     <ion-item padding>
       <ion-icon item-left name="person"></ion-icon>

@@ -18,6 +18,9 @@ import { InfluencerSignupPage } from '../influencer-signup/influencer-signup';
 export class SignupPage {
   questions = <any>[];
 
+  isInfluencer = false;
+  influencerCode = "";
+  correctCode = false;
   fullName: "";
   userName: "";
   email: "";
@@ -31,21 +34,6 @@ export class SignupPage {
   constructor(public navCtrl: NavController, public apollo: Angular2Apollo,
               public toastCtrl: ToastController, private Camera: Camera,
               private platform: Platform ) {
-    this.apollo.query({
-      query: gql`
-        query {
-          allQuestions {
-            id
-            question
-          }
-        }
-      `
-    }).toPromise().then(({data}) => {
-      this.questions = data;
-      this.questions = this.questions.allQuestions;
-    })
-
-
   }
 
   loginEvent(event) {
@@ -65,8 +53,28 @@ export class SignupPage {
       });
       toast.present();
     }
-    else{
+    else {
+      if (this.influencerCode) {
+        this.checkAccessCode().then(({data}) => {
+          let allAccessCodes = <any>[];
+          allAccessCodes = data;
+          allAccessCodes = allAccessCodes.allAccessCodes;
+          if (allAccessCodes.length) {
+            console.log(allAccessCodes);
+            this.correctCode = true;
+          } else {
+            let toast = this.toastCtrl.create({
+              message: 'Access code is not correct. Please try again',
+              duration: 3000,
+              position: 'top'
+            });
+            toast.present();
+            return;
+          }
+        });
+      }
       this.createUser().then(({data}) => {
+        console.log(data);
           if (data){
             this.signIn().then(({data}) => {
               this.userInfo.data = data
@@ -102,19 +110,19 @@ export class SignupPage {
 
 
   createUser(){
-      console.log(this.fullName);
       return this.apollo.mutate({
         mutation: gql`
         mutation createUser($email: String!,
                             $password: String!,
                             $fullName: String!,
                             $userName: String!,
-                            $profilePic: String){
+                            $profilePic: String,
+                            $isInfluencer: Boolean){
 
           createUser(authProvider: { email: {email: $email, password: $password}},
                      fullName: $fullName,
                      userName: $userName,
-                     profilePic: $profilePic){
+                     profilePic: $profilePic, isInfluencer: $isInfluencer){
             id
           }
         }
@@ -124,7 +132,8 @@ export class SignupPage {
           userName: this.userName,
           email: this.email,
           password: this.password,
-          profilePic: this.imageUri
+          profilePic: this.imageUri,
+          isInfluencer: this.correctCode
         }
       }).toPromise();
   }
@@ -143,6 +152,20 @@ export class SignupPage {
         variables: {
           email: this.email,
           password: this.password,
+        }
+      }).toPromise();
+  }
+
+  checkAccessCode() {
+      return this.apollo.query({
+        query: gql`
+          query allAccessCodes($accessCode: String!) {
+            allAccessCodes(filter: {accessCode: $accessCode}){
+              id
+            }
+          }
+        `, variables: {
+            accessCode: this.influencerCode
         }
       }).toPromise();
   }

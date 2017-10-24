@@ -32,7 +32,7 @@ export class InquirePage {
                   query: gql`
                     query {
                       allUsers(filter: {
-                        influencer: true
+                        isInfluencer: true
                       }) {
                         id
                         fullName

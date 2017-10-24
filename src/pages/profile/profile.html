@@ -9,12 +9,42 @@
   </ion-navbar>
 </ion-header>
 
+
 <ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-left></ion-icon>
-      @ionicframework
+  <!-- <div id="profile-bg"></div> -->
+  <div *ngIf="user">
+    <img class="avatar-background" src="{{user.profilePic}}" />
+    <div class="avatar-background2"></div>
+  </div>
+  <div id="content">
+    <div id="profile-info" padding *ngIf="user">
+      <img id="profile-image" [src]="user.profilePic">
+      <h3 id="profile-name">{{user.fullName}}</h3>
+      <ion-row class="profile-numbers">
+        <ion-col col-6 >
+          <!-- <p><ion-icon ios="ios-create-outline" md="md-create"></ion-icon></p> -->
+          <span>Questions Asked: </span>
+          <h3 text-bold> 6 </h3>
+        </ion-col>
+        <ion-col col-6>
+          <!-- <p><ion-icon ios="ios-trophy-outline" md="md-trophy"></ion-icon></p> -->
+          <span>Money Donated: </span>
+          <h3 text-bold> $300 </h3>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+
+  <ion-list *ngIf="user.questions">
+    <ion-item *ngFor="let question of user.questions">
+      <h3 id="influencer" padding-bottom>{{question.influencer.fullName}}</h3>
+      <p text-wrap id="question" padding-bottom>{{question.question}}? </p>
+      <!-- <h5>Asked by:<span id="asker"> {{question.user.fullName}}</span> -->
+        <ion-note item-end float-right>
+          <ion-icon name="eye"></ion-icon> <span id="views">1220</span>
+        </ion-note>
+      <!-- </h5> -->
     </ion-item>
   </ion-list>
+
 </ion-content>
