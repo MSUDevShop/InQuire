@@ -58,7 +58,6 @@ export class SignupPage {
           allAccessCodes = data;
           allAccessCodes = allAccessCodes.allAccessCodes;
           if (allAccessCodes.length) {
-            console.log(allAccessCodes);
             this.correctCode = true;
           } else {
             let toast = this.toastCtrl.create({
@@ -71,38 +70,40 @@ export class SignupPage {
           }
         });
       }
-      this.createUser().then(({data}) => {
-        console.log(data);
-          if (data){
-            this.signIn().then(({data}) => {
-              this.userInfo.data = data
-              console.log(this.userInfo.data.signinUser.token);
-              window.localStorage.setItem('graphcoolToken', this.userInfo.data.signinUser.token);
-              this.navCtrl.setRoot(TabsPage);
-            }, (errors) => {
-                console.log(errors);
-                if (errors == "GraphQL error: No user found with that information") {
-                  let toast = this.toastCtrl.create({
-                    message: 'User already exists with that information. Try again.',
-                    duration: 3000,
-                    position: 'top'
-                  });
-                  toast.present();
-                }
-              });
+      if (this.correctCode) {
+        this.createUser().then(({data}) => {
+          console.log(data);
+            if (data){
+              this.signIn().then(({data}) => {
+                this.userInfo.data = data
+                console.log(this.userInfo.data.signinUser.token);
+                window.localStorage.setItem('graphcoolToken', this.userInfo.data.signinUser.token);
+                this.navCtrl.setRoot(TabsPage);
+              }, (errors) => {
+                  console.log(errors);
+                  if (errors == "GraphQL error: No user found with that information") {
+                    let toast = this.toastCtrl.create({
+                      message: 'User already exists with that information. Try again.',
+                      duration: 3000,
+                      position: 'top'
+                    });
+                    toast.present();
+                  }
+                });
 
-          }
-        }, (errors) => {
-          console.log(errors);
-          if (errors == "Error: GraphQL error: User already exists with that information") {
-            let toast = this.toastCtrl.create({
-              message: 'User already exists with that information. Try again.',
-              duration: 3000,
-              position: 'top'
-            });
-            toast.present();
-          }
-        });
+            }
+          }, (errors) => {
+            console.log(errors);
+            if (errors == "Error: GraphQL error: User already exists with that information") {
+              let toast = this.toastCtrl.create({
+                message: 'User already exists with that information. Try again.',
+                duration: 3000,
+                position: 'top'
+              });
+              toast.present();
+            }
+          });
+      }
     }
   }
 
