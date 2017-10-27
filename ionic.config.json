@@ -1,6 +1,6 @@
 {
   "name": "inQuire",
-  "app_id": "",
+  "app_id": "3631cfd8",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}
