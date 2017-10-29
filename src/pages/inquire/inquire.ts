@@ -21,6 +21,7 @@ import gql from 'graphql-tag';
 export class InquirePage {
 
   influencers = <any>[]; // These are all the influencers the current user "follows"
+  userId: any;
   // pushPage: any;
   // params: Object; //
 
@@ -38,14 +39,23 @@ export class InquirePage {
                         fullName
                         profilePic
                       }
+                      user {
+                        id
+                      }
                     }
                   `
                 }).toPromise().then(({data}) => {
-                  this.influencers = data;
-                  this.influencers = this.influencers.allUsers;
-                  console.log(data);
-                  // Sets an array of influencers the user follows to this.influencers
-                  // this.influencers = this.influencers.user.following;
+                  
+                  //Excluding user from list if is influencer
+                  let temp: any;
+                  temp = data;
+                  this.userId = temp.user.id;
+                  for (let influencer of temp.allUsers) {
+                    if (influencer.id != this.userId) {
+                      this.influencers.push(influencer);
+                    }
+                  }
+                  console.log(this.influencers);
                 })
 
             }

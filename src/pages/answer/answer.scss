@@ -1,0 +1,9 @@
+page-answer {
+  #asker, .charLeft {
+    color: map-get($colors, primary);
+  }
+  #value {
+    color: green;
+    font-weight: bold;
+  }
+}

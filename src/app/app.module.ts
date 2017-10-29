@@ -11,9 +11,8 @@ import { QuestionPage } from '../pages/question/question';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
-import { NotificationsPage } from '../pages/notifications/notifications';
-import { StoriesPage } from '../pages/stories/stories';
 import { SettingsPage } from '../pages/settings/settings';
+import { AnswerPage } from '../pages/answer/answer';
 
 //Apollo config
 import { provideClient } from './client';
@@ -42,9 +41,8 @@ import { FormBuilder } from '@angular/forms';
     TabsPage,
     LoginPage,
     SignupPage,
-    NotificationsPage,
-    StoriesPage,
-    SettingsPage
+    SettingsPage,
+    AnswerPage
   ],
   imports: [
     ApolloModule.withClient(provideClient),
@@ -62,9 +60,8 @@ import { FormBuilder } from '@angular/forms';
     TabsPage,
     LoginPage,
     SignupPage,
-    NotificationsPage,
-    StoriesPage,
-    SettingsPage
+    SettingsPage,
+    AnswerPage
   ],
   providers: [
     Camera,

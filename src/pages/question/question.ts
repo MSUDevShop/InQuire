@@ -1,12 +1,5 @@
-/*
-  Author: Yash Vesikar
-  Created On: 10/9/2017
-
-  CHANGELOG:
-
-*/
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 import { FormsModule }   from '@angular/forms'
 
 import { Angular2Apollo } from 'angular2-apollo';
@@ -31,7 +24,8 @@ export class QuestionPage {
   constructor(public navCtrl: NavController,
               public apollo: Angular2Apollo,
               public navParams: NavParams,
-              public alertCtrl: AlertController) {
+              public alertCtrl: AlertController,
+              public toastCtrl: ToastController) {
                 // gql Query that returns the current users ID
                 this.apollo.query({
                   query: gql`
@@ -102,6 +96,14 @@ export class QuestionPage {
           influencerId: this.influencer.id,
           userId: this.userId
         }
+      }).toPromise().then(({data}) => {
+        let toast = this.toastCtrl.create({
+          message: 'Question asked successfully',
+          duration: 3000,
+          position: 'top'
+        });
+        toast.present();
+        this.navCtrl.pop();
       });
     }
   }

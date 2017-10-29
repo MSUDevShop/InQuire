@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { SettingsPage } from '../settings/settings';
+import { AnswerPage } from '../answer/answer';
 
 import { Angular2Apollo } from 'angular2-apollo';
 import gql from 'graphql-tag';
@@ -19,8 +20,25 @@ export class ProfilePage {
     this.getUserInfo().then(({data}) => {
       this.user = data;
       this.user = this.user.user;
+      for(let question of this.user.questionsToMe) {
+        if (!question.answer) {
+          this.questions.push(question);
+        }
+      }
       console.log(this.user);
-    })
+    });
+  }
+  ionViewDidEnter() {
+    this.getUserInfo().then(({data}) => {
+      this.user = data;
+      this.user = this.user.user;
+      for(let question of this.user.questionsToMe) {
+        if (!question.answer) {
+          this.questions.push(question);
+        }
+      }
+      console.log(this.user);
+    });
   }
 
   getUserInfo() {
@@ -33,23 +51,29 @@ export class ProfilePage {
           profilePic
           fullName
           isInfluencer
-          questions {
+          questionsToMe {
             id
             question
             value
-            influencer {
+            answer
+            user {
               id
               fullName
             }
           }
         }
       }
-      `
+      `,
+      fetchPolicy: "network-only"
     }).toPromise();
   }
 
   goToSettingsPage() {
     this.navCtrl.push(SettingsPage);
+  }
+
+  gotoAnswer(question) {
+    this.navCtrl.push(AnswerPage, {question: question});
   }
 
 }

@@ -121,5 +121,12 @@ page-profile {
     font-size: 1.1em;
     color: black !important;
   }
+  .answer {
+    color: map-get($colors, primary);
+  }
+  #value {
+    color: green;
+    font-weight: bold;
+  }
 
 }
