@@ -8,5 +8,11 @@ page-question {
     .charLeft {
       color: map-get($colors, primary);
     }
+    ion-avatar img {
+      border: 2px solid map-get($colors, primary);
+    }
+    .toWhom {
+      font-weight: bold;
+    }
 
 }

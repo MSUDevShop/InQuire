@@ -49,7 +49,7 @@ export class QuestionPage {
     // New Question data
     newQuestion = {
       text: "",
-      value:[].toString(),
+      value:[1].toString(),
       userId: this.user.id
     }
 
@@ -62,6 +62,12 @@ export class QuestionPage {
     let input = this.newQuestion;
     if(input.text === ""){
       console.log("Throw incorrect question error"); // Need to turn input area red w/ error message
+      let toast = this.toastCtrl.create({
+        message: 'Please type the question first.',
+        duration: 3000,
+        position: 'top'
+      });
+      toast.present();
     } else if(isNaN(parseInt(input.value)) === true){
       console.log("Throw incorrect value input"); // Need to turn value red w/ error message
     } else if (parseInt(input.value) <= 0){

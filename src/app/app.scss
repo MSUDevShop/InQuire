@@ -20,6 +20,21 @@
   src: url("../assets/fonts/CenturyGothic.ttf");
 }
 
+.toolbar-background, .tabbar {
+  background-color: #2a323a !important;
+}
+.toolbar-title {
+  color: map-get($colors, primary);
+}
+
+.ion-ios-applogo,.ion-md-applogo, {
+  content: url('../assets/logo.png');
+}
+.ion-ios-applogo-outline, .ion-md-applogo-outline {
+  content: url('../assets/logo.png');
+  filter: grayscale(90%) !important;
+}
+
 * {
   font-family: 'CenturyGothic';
 }
