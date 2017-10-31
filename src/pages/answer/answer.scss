@@ -6,4 +6,10 @@ page-answer {
     color: green;
     font-weight: bold;
   }
+  h2:first-letter {
+    text-transform: capitalize;
+  }
+  #logo {
+    // height: 40px;
+  }
 }

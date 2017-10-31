@@ -12,10 +12,11 @@ import 'rxjs/add/operator/toPromise';
 })
 export class AnswerPage {
   answer: any = "";
-
+  user = <any> {};
   question: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public apollo: Angular2Apollo, public toastCtrl: ToastController) {
     this.question = this.navParams.get("question")
+    this.user = this.navParams.get("user");
   }
 
   answerQuestion() {

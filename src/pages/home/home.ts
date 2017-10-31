@@ -21,8 +21,8 @@ export class HomePage {
              ) {
     this.apollo.query({
       query: gql`
-        query {
-          allQuestions {
+        query allQuestions($param: String){
+          allQuestions(filter: {answer_not: $param}) {
             id
             question
             influencer {
@@ -35,7 +35,9 @@ export class HomePage {
             }
           }
         }
-      `
+      `, variables: {
+        param: null
+      }
     }).toPromise().then(({data}) => {
       this.questions = data;
       this.questions = this.questions.allQuestions;

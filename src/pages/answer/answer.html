@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>answer</ion-title>
+    <ion-title>Answer</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -20,8 +20,12 @@
       Question
     </ion-list-header>
     <ion-item>
-      <h3 padding-bottom><span id="value" text-bold>${{this.question.value}}</span> - {{this.question.question}}?</h3>
-      <h5>Asked by:<span id="asker"> {{question.user.fullName}}</span></h5>
+      <ion-avatar item-start>
+        <img id="logo" src="../assets/logo.png" />
+      </ion-avatar>
+      <!-- <span id="value" text-bold>${{this.question.value}}</span> -  -->
+      <h2 text-wrap>{{this.question.question}}?</h2>
+      <p>Asked by:<span id="asker"> {{question.user.fullName}}</span></p>
     </ion-item>
   </ion-list>
 
@@ -30,9 +34,15 @@
       Answer
     </ion-list-header>
     <ion-item>
-      <ion-textarea autoComplete="on" spellcheck="on" [(ngModel)]="answer"  autocorrect="on" type="text" ng-trim="false" placeholder="Answer here..." name="description" maxlength="140" autosize></ion-textarea>
+      <ion-avatar item-start>
+        <img [src]="user.profilePic" />
+      </ion-avatar>
+      <p> To: <span class="toWhom" id="asker" text-capitalize> {{question.user.fullName}} </span> </p>
     </ion-item>
-    <span class="charLeft" float-right>{{140 - answer.length}}</span>
+    <ion-item>
+      <ion-textarea autoComplete="on" spellcheck="on" [(ngModel)]="answer"  autocorrect="on" type="text" ng-trim="false" placeholder="Your answer." name="description" maxlength="250" autosize></ion-textarea>
+    </ion-item>
+    <span class="charLeft" float-right>{{250 - answer.length}}</span>
   </ion-list>
 
   <button ion-button round block (tap)="answerQuestion()">Answer</button>

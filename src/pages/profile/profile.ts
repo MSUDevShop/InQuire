@@ -32,6 +32,7 @@ export class ProfilePage {
     this.getUserInfo().then(({data}) => {
       this.user = data;
       this.user = this.user.user;
+      this.questions = [];
       for(let question of this.user.questionsToMe) {
         if (!question.answer) {
           this.questions.push(question);
@@ -73,7 +74,7 @@ export class ProfilePage {
   }
 
   gotoAnswer(question) {
-    this.navCtrl.push(AnswerPage, {question: question});
+    this.navCtrl.push(AnswerPage, {question: question, user: this.user});
   }
 
 }
