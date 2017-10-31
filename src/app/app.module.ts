@@ -29,6 +29,7 @@ import { HttpModule } from '@angular/http';
 import { Camera } from '@ionic-native/camera';
 import { UserProvider } from '../providers/user/user';
 import { FormBuilder } from '@angular/forms';
+import { FlashCardComponent } from '../components/flash-card/flash-card';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { FormBuilder } from '@angular/forms';
     LoginPage,
     SignupPage,
     SettingsPage,
-    AnswerPage
+    AnswerPage,
+    FlashCardComponent
   ],
   imports: [
     ApolloModule.withClient(provideClient),

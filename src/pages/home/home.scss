@@ -2,13 +2,32 @@ page-home {
   #influencer, #asker, #views {
     color: map-get($colors, primary);
   }
+  ion-avatar img {
+    border: 2px solid map-get($colors, primary);
+  }
+  ion-row h3 {
+    margin-top: 15px !important;
+  }
   ion-note {
     font-size: 0.9em;
     margin: 0 !important;
   }
   #question {
     font-size: 1.1em;
-    color: black !important;
+    color: black;
+  }
+  p {
+    font-size: 0.8em !important;
+  }
+  .back ion-item {
+    background-color: #2a323a;
+    .item-inner {
+      border: none !important;
+    }
+    #question {
+      color: white;
+    }
+
   }
 
 }

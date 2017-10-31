@@ -6,7 +6,7 @@
 
   <ion-content padding>
 
-  <ion-list>
+  <!-- <ion-list>
     <ion-list-header>
       Questions
     </ion-list-header>
@@ -19,6 +19,38 @@
         </ion-note>
       </h5>
     </ion-item>
-  </ion-list>
+  </ion-list> -->
+
+  <ion-list >
+
+  <flash-card *ngFor="let question of questions">
+
+    <div class="flash-card-front">
+      <ion-item>
+        <h3 id="influencer" padding-bottom>{{question.influencer.fullName}}</h3>
+        <p text-wrap id="question" padding-bottom text-wrap>{{question.question}}? </p>
+        <h5>Asked by:<span id="asker"> {{question.user.fullName}}</span>
+          <ion-note item-end float-right>
+            <ion-icon name="eye"></ion-icon> <span id="views">1220</span>
+          </ion-note>
+        </h5>
+      </ion-item>
+    </div>
+
+    <div class="flash-card-back">
+      <ion-item>
+        <!-- <ion-row> -->
+          <ion-avatar item-start>
+            <img [src]="question.influencer.profilePic" />
+          </ion-avatar>
+          <h3 id="influencer" padding-bottom>{{question.influencer.fullName}}</h3>
+        <!-- </ion-row> -->
+
+        <p text-wrap id="question" padding-bottom text-wrap>{{question.answer}}</p>
+      </ion-item>
+    </div>
+</flash-card>
+
+</ion-list>
 
 </ion-content>
