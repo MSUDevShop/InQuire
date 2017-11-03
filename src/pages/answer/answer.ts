@@ -37,7 +37,8 @@ export class AnswerPage {
           }
         `, variables: {
           id: this.question.id,
-          answer: this.answer
+          answer: this.answer,
+          answered: true
         }
       }).toPromise().then(({data}) => {
         let toast = this.toastCtrl.create({

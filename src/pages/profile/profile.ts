@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { SettingsPage } from '../settings/settings';
-import { AnswerPage } from '../answer/answer';
 
 import { Angular2Apollo } from 'angular2-apollo';
 import gql from 'graphql-tag';
@@ -71,10 +70,6 @@ export class ProfilePage {
 
   goToSettingsPage() {
     this.navCtrl.push(SettingsPage);
-  }
-
-  gotoAnswer(question) {
-    this.navCtrl.push(AnswerPage, {question: question, user: this.user});
   }
 
 }

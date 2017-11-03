@@ -1,10 +1,3 @@
-/*
-Author: Yash Vesikar
-Created On: 10/9/2017
-
-CHANGELOG:
-
-*/
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
@@ -12,6 +5,8 @@ import { QuestionPage } from '../question/question';
 
 import { Angular2Apollo } from 'angular2-apollo';
 import gql from 'graphql-tag';
+
+import { AnswerPage } from '../answer/answer';
 
 
 @Component({
@@ -22,6 +17,9 @@ export class InquirePage {
 
   influencers = <any>[]; // These are all the influencers the current user "follows"
   userId: any;
+  user = <any>{};
+  isInfluencer: boolean = false;
+  questionsToMe = <any>[];
   // pushPage: any;
   // params: Object; //
 
@@ -41,21 +39,43 @@ export class InquirePage {
                       }
                       user {
                         id
+                        isInfluencer
+                        profilePic
+                        questionsToMe {
+                          id
+                          question
+                          value
+                          answer
+                          user {
+                            id
+                            fullName
+                          }
+                        }
                       }
                     }
                   `
                 }).toPromise().then(({data}) => {
-                  
+
                   //Excluding user from list if is influencer
                   let temp: any;
                   temp = data;
                   this.userId = temp.user.id;
+                  this.user = temp.user;
+                  this.isInfluencer = temp.user.isInfluencer;
+                  if (this.isInfluencer) {
+                    // this.questionsToMe = temp.user.questionsToMe;
+                    this.questionsToMe = [];
+                    for(let question of temp.user.questionsToMe) {
+                      if (!question.answer) {
+                        this.questionsToMe.push(question);
+                      }
+                    }
+                  }
                   for (let influencer of temp.allUsers) {
                     if (influencer.id != this.userId) {
                       this.influencers.push(influencer);
                     }
                   }
-                  console.log(this.influencers);
                 })
 
             }
@@ -67,6 +87,10 @@ export class InquirePage {
     influencer : object[influencer]
     */
     this.navCtrl.push(QuestionPage, { influencer: influencer });
+  }
+
+  gotoAnswer(question) {
+    this.navCtrl.push(AnswerPage, {question: question, user: this.user});
   }
 
 }

@@ -1,27 +1,47 @@
 <ion-header>
     <ion-navbar>
-      <ion-title>Ask Question</ion-title>
+      <ion-title>Question</ion-title>
     </ion-navbar>
   </ion-header>
 
 
 
 <ion-content padding>
-<!-- Header image and text  -->
-  <div text-center>
-    <h2>Influencers</h2>
-  </div>
 
-<!-- List of the influencers -->
-  <ion-list>
-    <button ion-item
-            *ngFor="let influencer of influencers"
-            (click)="openQuestionPage(influencer)">
-      <ion-avatar item-start> <!-- Influencer avatar -->
-        <img src={{influencer.profilePic}}/>
-      </ion-avatar>
-      <h2>{{influencer.fullName}} </h2>
-    </button>
-  </ion-list>
+  <div *ngIf="!isInfluencer">
+  <!-- Header image and text  -->
+    <div text-center>
+      <h2>Influencers</h2>
+    </div>
+
+  <!-- List of the influencers -->
+    <ion-list>
+      <button ion-item
+              *ngFor="let influencer of influencers"
+              (click)="openQuestionPage(influencer)">
+        <ion-avatar item-start> <!-- Influencer avatar -->
+          <img src={{influencer.profilePic}}/>
+        </ion-avatar>
+        <h2>{{influencer.fullName}} </h2>
+      </button>
+    </ion-list>
+  </div>
+  <div *ngIf="isInfluencer">
+    <!-- Header image and text  -->
+      <div text-center>
+        <h2>Questions to me</h2>
+      </div>
+      <ion-list *ngIf="questionsToMe">
+        <ion-item *ngFor="let question of questionsToMe">
+          <p text-wrap id="question" padding-bottom>Q. {{this.question.question}}?</p>
+          <h5>Donating: <span id="value">${{this.question.value}}</span></h5>
+          <h5>Asked by:<span id="asker"> {{question.user.fullName}}</span></h5>
+          <ion-note item-end float-right>
+            <!-- <ion-icon name="eye"></ion-icon> <span id="views">1220</span> -->
+            <span class="answer" (tap)="gotoAnswer(question)">Answer</span>
+          </ion-note>
+        </ion-item>
+      </ion-list>
+  </div>
 
 </ion-content>
