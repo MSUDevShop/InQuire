@@ -7,6 +7,7 @@ import gql from 'graphql-tag';
 import 'rxjs/add/operator/toPromise';
 
 import { QuestionPage } from '../question/question';
+import { InfluencerProfilePage } from '../influencer-profile/influencer-profile';
 
 @Component({
   selector: 'page-home',
@@ -15,6 +16,7 @@ import { QuestionPage } from '../question/question';
 export class HomePage {
   questionPage = QuestionPage;
   questions = <any>[];
+  user = <any> {};
 
   constructor(public navCtrl: NavController,
               public apollo: Angular2Apollo
@@ -36,15 +38,26 @@ export class HomePage {
               fullName
             }
           }
+          user{
+            id
+            isInfluencer
+            profilePic
+            fullName
+          }
         }
       `, variables: {
         param: null
       }
     }).toPromise().then(({data}) => {
       this.questions = data;
+      this.user = this.questions.user;
       this.questions = this.questions.allQuestions;
     })
 
+  }
+
+  gotoInfluencer(influencer) {
+    this.navCtrl.push(InfluencerProfilePage, {influencer: influencer});
   }
 
 }

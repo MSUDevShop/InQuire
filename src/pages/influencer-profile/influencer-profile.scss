@@ -1,44 +1,33 @@
-page-profile {
-  $primary: map-get($colors, primary);
+page-influencer-profile {
   ion-content {
     background: linear-gradient(0deg, #eeeef1 0%, white 80%, white 100%);
   }
-  #content {
-    h3, span, p, h5 {
-      color: white !important;
-    }
+  button,
+  ion-button,
+  .button-md,
+  .button-ios {
+    text-transform: none !important;
   }
-  .avatar-background {
-    position: absolute;
-    left: 0;
-    z-index: -1;
-    height: 350px;
-    width: 100%;
-    transform: scale(1);
-    background: linear-gradient(#2B323A, rgb(36, 36, 36));
+  p {
+    color: #444;
   }
-  .toolbar-background {
-    background-color: #4dc7ff;
-    border-bottom: 0px !important;
-  }
-
   // Cover image
   #profile-bg {
     position: absolute;
     left: 0;
     width: 100%;
     margin-top: -16px;
-    height: 400px;
+    height: 160px;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     text-align: center;
-    background: linear-gradient(white, grey);
-    }
+    background-image: url('https://github.com/yannbf/ionic3-components/blob/master/src/assets/img/background/background-5.jpg?raw=true');
+  }
   // Profile content
   #content {
     position: relative;
-    margin-top: 100px;
+    margin-top: 150px;
     padding-top: 230px;
     text-align: center;
   }
@@ -49,7 +38,6 @@ page-profile {
     width: 130px;
     margin: 0 auto 0;
     box-shadow: 0px 11px 20px -3px rgba(142, 136, 146, 0.75);
-    // border: 2px solid white;
   }
   #profile-info {
     position: absolute;
@@ -76,42 +64,22 @@ page-profile {
       font-size: 2.5rem;
     }
   }
-  .questions {
-    padding-top: 30px;
-  }
   // Following, Followers and all..
   .profile-numbers {
-    font-size: 1.1em;
-    // font-weight: bold;
-    margin-top: 30px;
-    ion-icon {
-      font-size: 2em;
+    ion-col {
+      margin: auto;
     }
-    .number {
-
+    p {
       color: #444;
-      font-size: 2.1em;
-      margin-bottom: 0px;
-      // font-weight: bold;
+      font-size: medium;
+      // margin-bottom: 3px;
     }
-  }
-  #influencer, #asker, #views {
-    color: map-get($colors, primary);
-  }
-  ion-note {
-    font-size: 0.9em;
-    margin: 0 !important;
-  }
-  #question {
-    font-size: 1.1em;
-    color: black !important;
-  }
-  .answer {
-    color: map-get($colors, primary);
-  }
-  #value {
-    color: green;
-    font-weight: bold;
+    span {
+      font-weight: bold;
+      font-size: 2.4rem;
+      color: #34354c;
+    }
+    // padding-bottom: 35px;
   }
 
 }

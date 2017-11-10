@@ -13,6 +13,7 @@ import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { SettingsPage } from '../pages/settings/settings';
 import { AnswerPage } from '../pages/answer/answer';
+import { InfluencerProfilePage } from '../pages/influencer-profile/influencer-profile';
 
 //Apollo config
 import { provideClient } from './client';
@@ -44,7 +45,8 @@ import { FlashCardComponent } from '../components/flash-card/flash-card';
     SignupPage,
     SettingsPage,
     AnswerPage,
-    FlashCardComponent
+    FlashCardComponent,
+    InfluencerProfilePage
   ],
   imports: [
     ApolloModule.withClient(provideClient),
@@ -63,7 +65,8 @@ import { FlashCardComponent } from '../components/flash-card/flash-card';
     LoginPage,
     SignupPage,
     SettingsPage,
-    AnswerPage
+    AnswerPage,
+    InfluencerProfilePage
   ],
   providers: [
     Camera,

@@ -1,4 +1,6 @@
 page-home {
+
+  //If user is not influencer
   #influencer, #asker, #views {
     color: map-get($colors, primary);
   }
@@ -30,7 +32,33 @@ page-home {
     p, h3 {
       font-weight: bold;
     }
+  }
 
+
+
+
+
+
+  //If user is influencer
+  .background {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    height: 100%;
+  }
+  .influencerProfile {
+    background-color: #2a323a !important;
+  }
+  .profileInfo ion-avatar img {
+    width: 60px;
+    height: 60px;
+    border: none;
+  }
+  .profileInfo {
+    background-color: transparent;
+    border: none !important;
+    color: white;
   }
 
 }

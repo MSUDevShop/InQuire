@@ -29,12 +29,12 @@
 
 .ion-ios-applogo,.ion-md-applogo, {
   content: url('../assets/logo.png');
-  max-width: 10%;
+  max-width: 25%;
 }
 .ion-ios-applogo-outline, .ion-md-applogo-outline {
   content: url('../assets/logo.png');
   filter: grayscale(90%) !important;
-  max-width: 10%;
+  max-width: 25%;
 }
 
 * {
