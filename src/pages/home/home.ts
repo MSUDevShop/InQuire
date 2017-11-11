@@ -9,6 +9,8 @@ import 'rxjs/add/operator/toPromise';
 import { QuestionPage } from '../question/question';
 import { InfluencerProfilePage } from '../influencer-profile/influencer-profile';
 
+import { RoundProgressModule } from 'angular-svg-round-progressbar';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'

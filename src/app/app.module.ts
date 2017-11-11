@@ -21,6 +21,7 @@ import { ApolloModule } from 'angular2-apollo';
 
 //Modules
 import { Autosize } from '../components/autosize';
+import {RoundProgressModule} from 'angular-svg-round-progressbar';
 
 //Providers
 import { StatusBar } from '@ionic-native/status-bar';
@@ -52,7 +53,8 @@ import { FlashCardComponent } from '../components/flash-card/flash-card';
     ApolloModule.withClient(provideClient),
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpModule
+    HttpModule,
+    // RoundProgressModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

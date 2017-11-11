@@ -1,11 +1,11 @@
 <ion-header>
-    <ion-toolbar>
-      <ion-title>Home</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-toolbar>
+    <ion-title>Home</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-  <ion-content padding class="influencerProfile">
-    <div *ngIf="!user.isInfluencer">
+  <ion-content padding *ngIf="!user.isInfluencer">
+    <div >
       <ion-list>
         <flash-card *ngFor="let question of questions">
           <div class="flash-card-front">
@@ -32,7 +32,9 @@
       </flash-card>
     </ion-list>
   </div>
-  <div *ngIf="user.isInfluencer">
+</ion-content>
+<ion-content *ngIf="user.isInfluencer" class="influencerProfile">
+  <div>
     <div class="background"></div>
     <ion-list>
       <ion-item class="profileInfo">

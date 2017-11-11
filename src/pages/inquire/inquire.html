@@ -1,6 +1,11 @@
 <ion-header>
     <ion-navbar>
-      <ion-title>Question</ion-title>
+      <ion-searchbar
+        [(ngModel)]="myInput"
+        [showCancelButton]="true"
+        (ionInput)="getItems($event)"
+        (ionCancel)="onCancel($event)">
+      </ion-searchbar>
     </ion-navbar>
   </ion-header>
 
@@ -17,7 +22,7 @@
   <!-- List of the influencers -->
     <ion-list>
       <button ion-item
-              *ngFor="let influencer of influencers"
+              *ngFor="let influencer of influencersData"
               (click)="openQuestionPage(influencer)">
         <ion-avatar item-start> <!-- Influencer avatar -->
           <img src={{influencer.profilePic}}/>
