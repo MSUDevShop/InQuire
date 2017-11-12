@@ -1,4 +1,20 @@
 page-signup{
+  ion-content {
+    background-color: #2a323a !important;
+  }
+  ion-item {
+    background-color: transparent !important;
+    color: white !important;
+    button {
+      color: white !important;
+    }
+  }
+  ion-item:first-child {
+    border-top: 0px !important;
+  }
+  ion-item:last-child {
+    // border-bottom: 0px !important;
+  }
   .back-button{
       color: #0AAB83;
   }

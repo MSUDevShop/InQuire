@@ -1,4 +1,26 @@
 page-login{
+  ion-content {
+    // color: white !important;
+    background-image: url('../assets/login.png');
+    background-size: cover;
+  }
+
+  .loginform {
+    width: 90%;
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+    // padding-top: 110%;
+  }
+  ion-item {
+    background-color: transparent !important;
+    color: white !important;
+  }
+
+  //iOS formatting
+  ion-item:first-child {
+    border-top: 0px !important;
+  }
 
   .logoSpace{
     height: 50%;
