@@ -17,6 +17,7 @@ export class InquirePage {
 
   influencers = <any>[]; // These are all the influencers the current user "follows"
   influencersData = <any>[];
+  top3 = <any>[];
   userId: any;
   user = <any>{};
   isInfluencer: boolean = false;
@@ -76,7 +77,9 @@ export class InquirePage {
             this.influencers.push(influencer);
           }
         }
-        this.influencersData = this.influencers;
+        this.top3 = this.influencers.slice(0, 3);
+        console.log(this.top3);
+        this.influencersData = this.influencers.slice(3);
       })
 
   }

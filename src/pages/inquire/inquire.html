@@ -11,7 +11,7 @@
 
 
 
-<ion-content padding>
+<ion-content>
 
   <div *ngIf="!isInfluencer">
   <!-- Header image and text  -->
@@ -21,14 +21,20 @@
     </div>
 
   <!-- List of the influencers -->
+  <ion-row>
+    <ion-col class="top3" col-4 *ngFor="let influencer of top3" text-center (tap)="openQuestionPage(influencer)">
+      <img  [src]="influencer.profilePic" />
+      <h6>{{influencer.fullName}}</h6>
+    </ion-col>
+  </ion-row>
     <ion-list>
       <button ion-item
               *ngFor="let influencer of influencersData"
-              (click)="openQuestionPage(influencer)">
+              (tap)="openQuestionPage(influencer)">
         <ion-avatar item-start> <!-- Influencer avatar -->
           <img src={{influencer.profilePic}}/>
         </ion-avatar>
-        <h2>{{influencer.fullName}} </h2>
+        <h4>{{influencer.fullName}} </h4>
       </button>
     </ion-list>
   </div>

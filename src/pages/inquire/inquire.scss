@@ -3,6 +3,22 @@ page-inquire {
   #influencer, #asker, #views {
     color: $primary
   }
+
+  .top3 {
+    img {
+      border-radius: 50%;
+      border: 2px solid rgb(187, 187, 187);
+      width: 60%;
+      height: 60%;
+    }
+  }
+  .top3:nth-child(2) img {
+    width: 80%;
+    height: 80%;
+  }
+  ion-row {
+    padding-bottom: 40px;
+  }
   ion-note {
     font-size: 0.9em;
     margin: 0 !important;
