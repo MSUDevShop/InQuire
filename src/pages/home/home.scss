@@ -60,5 +60,31 @@ page-home {
     border: none !important;
     color: white;
   }
+  //Progress Bar
+  .progress {
+    font-size: 3em;
+    top: 50%;
+    bottom: auto;
+    left: 50%;
+    position: absolute;
+    transform: translateY(-50%) translateX(-50%);
+    color: white;
+  }
+  circle {
+    stroke-width: 3 !important;
+  }
+  h4 {
+    color: white;
+    font-weight: 100;
+    font-size: 1.2em;
+    padding-top: 20px;
+  }
+  ion-list-header {
+    border-top: 0.55px solid #c8c7cc;
+    border-bottom: 0px !important;
+    padding-left: 0 !important;
+    font-size: 1em !important;
+    color: white !important;
+  }
 
 }

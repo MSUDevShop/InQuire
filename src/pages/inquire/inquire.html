@@ -17,16 +17,22 @@
   <!-- Header image and text  -->
     <div text-center class="header">
       <h2>Influencers</h2>
-      <!-- <img src="../../assets/lebron-influencer.jpg" /> -->
     </div>
 
   <!-- List of the influencers -->
+  <ion-grid>
+  <!-- <ion-row>
+    <ion-col class="top3" col-12 text-center>
+      <h2>Influencers</h2>
+    </ion-col>
+  </ion-row> -->
   <ion-row>
     <ion-col class="top3" col-4 *ngFor="let influencer of top3" text-center (tap)="openQuestionPage(influencer)">
       <img  [src]="influencer.profilePic" />
       <h6>{{influencer.fullName}}</h6>
     </ion-col>
   </ion-row>
+</ion-grid>
     <ion-list>
       <button ion-item
               *ngFor="let influencer of influencersData"

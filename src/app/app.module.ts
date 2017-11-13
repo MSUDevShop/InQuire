@@ -54,7 +54,7 @@ import { FlashCardComponent } from '../components/flash-card/flash-card';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpModule,
-    // RoundProgressModule
+    RoundProgressModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

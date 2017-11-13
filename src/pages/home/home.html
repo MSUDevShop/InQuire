@@ -4,8 +4,8 @@
   </ion-toolbar>
 </ion-header>
 
-  <ion-content padding *ngIf="!user.isInfluencer">
-    <div >
+  <ion-content padding [style.background-color]="user.isInfluencer ? '#2a323a' : 'none' ">
+    <div *ngIf="!user.isInfluencer">
       <ion-list>
         <flash-card *ngFor="let question of questions">
           <div class="flash-card-front">
@@ -32,19 +32,70 @@
       </flash-card>
     </ion-list>
   </div>
-</ion-content>
-<ion-content *ngIf="user.isInfluencer" class="influencerProfile">
-  <div>
-    <div class="background"></div>
+  <div *ngIf="user.isInfluencer">
     <ion-list>
       <ion-item class="profileInfo">
         <ion-avatar item-start>
           <img [src]="user.profilePic" />
         </ion-avatar>
-        <h2 text-capitalize>{{user.fullName}}</h2>
+        <h2 text-capitalize><strong>{{user.fullName}}</strong></h2>
         <p> 7.5K Followers </p>
       </ion-item>
     </ion-list>
+
+    <!-- Statistics about questions answered and unanswered  -->
+    <ion-grid>
+      <ion-row text-center>
+        <ion-col col-1>
+        </ion-col>
+        <ion-col col-4>
+          <div class="progress">
+            77
+          </div>
+          <round-progress [current]="77" [max]="100" [stroke]="10" [color]="'#57BB99'" [responsive]="true"></round-progress>
+        </ion-col>
+        <ion-col col-2>
+        </ion-col>
+        <ion-col col-4>
+          <div class="progress">
+            41
+          </div>
+          <round-progress [current]="41" [max]="100" [stroke]="10" [color]="'#E55558'" [responsive]="true"></round-progress>
+        </ion-col>
+        <ion-col col-1>
+        </ion-col>
+      </ion-row>
+      <ion-row text-center>
+        <ion-col col-6 text-nowrap>
+          <h4>ANSWERED</h4>
+        </ion-col>
+        <ion-col col-6 text-nowrap>
+          <h4>UNANSWERED</h4>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-list-header>
+      THIS MONTH
+    </ion-list-header>
+    <ion-grid class="moneyRaised">
+      <ion-row text-center>
+        <ion-col col-3>
+        </ion-col>
+        <ion-col col-6>
+          <div class="progress">
+            $1.200
+          </div>
+          <round-progress [current]="77" [max]="100" [stroke]="10" [color]="'#57BB99'" [responsive]="true"></round-progress>
+        </ion-col>
+        <ion-col col-3>
+        </ion-col>
+      </ion-row>
+      <ion-row text-center>
+        <ion-col col-12 text-nowrap>
+          <h4>MONEY RAISED</h4>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
 
 </ion-content>
