@@ -39,7 +39,10 @@
           <img [src]="user.profilePic" />
         </ion-avatar>
         <h2 text-capitalize><strong>{{user.fullName}}</strong></h2>
-        <p> 7.5K Followers </p>
+        <div>
+          <p> 7.5K Followers </p>
+          <p [style.color]="'#57BB99'"> 32.3K Raised </p>
+        </div>
       </ion-item>
     </ion-list>
 
@@ -50,17 +53,17 @@
         </ion-col>
         <ion-col col-4>
           <div class="progress">
-            77
+            {{answered}}
           </div>
-          <round-progress [current]="77" [max]="100" [stroke]="10" [color]="'#57BB99'" [responsive]="true"></round-progress>
+          <round-progress [current]="answered" [max]="user.questionsToMe.length" [stroke]="10" [color]="'#57BB99'" [responsive]="true"></round-progress>
         </ion-col>
         <ion-col col-2>
         </ion-col>
         <ion-col col-4>
           <div class="progress">
-            41
+            {{user.questionsToMe.length - answered}}
           </div>
-          <round-progress [current]="41" [max]="100" [stroke]="10" [color]="'#E55558'" [responsive]="true"></round-progress>
+          <round-progress [current]="user.questionsToMe.length - answered" [max]="user.questionsToMe.length" [stroke]="10" [color]="'#E55558'" [responsive]="true"></round-progress>
         </ion-col>
         <ion-col col-1>
         </ion-col>
@@ -83,9 +86,9 @@
         </ion-col>
         <ion-col col-6>
           <div class="progress">
-            $1.200
+            {{moneyRaised | currency:'USD':'symbol-narrow':'1.0-1'}}
           </div>
-          <round-progress [current]="77" [max]="100" [stroke]="10" [color]="'#57BB99'" [responsive]="true"></round-progress>
+          <round-progress [current]="moneyRaised" [max]="1000" [stroke]="10" [color]="'#57BB99'" [responsive]="true"></round-progress>
         </ion-col>
         <ion-col col-3>
         </ion-col>

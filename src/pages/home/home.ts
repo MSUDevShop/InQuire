@@ -11,6 +11,8 @@ import { InfluencerProfilePage } from '../influencer-profile/influencer-profile'
 
 import { RoundProgressModule } from 'angular-svg-round-progressbar';
 
+import { CurrencyPipe } from '@angular/common';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -19,6 +21,8 @@ export class HomePage {
   questionPage = QuestionPage;
   questions = <any>[];
   user = <any> {};
+  answered: any = 0;
+  moneyRaised: any = 0;
 
   constructor(public navCtrl: NavController,
               public apollo: Angular2Apollo
@@ -45,6 +49,11 @@ export class HomePage {
             isInfluencer
             profilePic
             fullName
+            questionsToMe {
+              id
+              answer
+              value
+            }
           }
         }
       `, variables: {
@@ -53,7 +62,14 @@ export class HomePage {
     }).toPromise().then(({data}) => {
       this.questions = data;
       this.user = this.questions.user;
+      console.log(this.user);
       this.questions = this.questions.allQuestions;
+      for (let question of this.user.questionsToMe) {
+        if (question.answer != "") {
+          this.answered++;
+          this.moneyRaised+=question.value;
+        }
+      }
     })
 
   }

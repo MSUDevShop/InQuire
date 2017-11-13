@@ -19,6 +19,10 @@
   font-family: CenturyGothic;
   src: url("../assets/fonts/CenturyGothic.ttf");
 }
+@font-face {
+  font-family: GeometriaLight;
+  src: url("../assets/fonts/geometria-light.otf");
+}
 
 .toolbar-background, .tabbar {
   background-color: #2a323a !important;
@@ -38,5 +42,5 @@
 }
 
 * {
-  font-family: 'CenturyGothic';
+  font-family: 'GeometriaLight';
 }
