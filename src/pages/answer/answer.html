@@ -1,9 +1,3 @@
-<!--
-  Generated template for the AnswerPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
@@ -13,12 +7,9 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
 
-  <ion-list>
-    <ion-list-header>
-      Question
-    </ion-list-header>
+  <ion-list class="question">
     <ion-item>
       <ion-avatar item-start>
         <img id="logo" src="../assets/logo.png" />
@@ -30,14 +21,11 @@
   </ion-list>
 
   <ion-list>
-    <ion-list-header>
-      Answer
-    </ion-list-header>
     <ion-item>
       <ion-avatar item-start>
-        <img [src]="user.profilePic" />
+        <img class="avatarPic" [src]="user.profilePic" />
       </ion-avatar>
-      <p> To: <span class="toWhom" id="asker" text-capitalize> {{question.user.fullName}} </span> </p>
+      <p> To: <span class="toWhom" text-capitalize> {{question.user.fullName}} </span> </p>
     </ion-item>
     <ion-item>
       <ion-textarea autoComplete="on" spellcheck="on" [(ngModel)]="answer"  autocorrect="on" type="text" ng-trim="false" placeholder="Your answer." name="description" maxlength="250" autosize></ion-textarea>
@@ -45,7 +33,10 @@
     <span class="charLeft" float-right>{{250 - answer.length}}</span>
   </ion-list>
 
-  <button ion-button round block (tap)="answerQuestion()">Answer</button>
-
-
 </ion-content>
+<ion-footer (tap)="answerQuestion()">
+  <ion-toolbar color="primary">
+    <ion-title>Answer</ion-title>
+  </ion-toolbar>
+
+</ion-footer>

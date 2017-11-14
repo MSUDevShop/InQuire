@@ -1,6 +1,10 @@
 page-answer {
+  $primary: map-get($colors, primary);
+  .question {
+    margin-bottom: 0px;
+  }
   #asker, .charLeft {
-    color: map-get($colors, primary);
+    color: $primary;
   }
   #value {
     color: green;
@@ -12,5 +16,17 @@ page-answer {
   #logo {
     height: 35px;
     width: 40px;
+  }
+  .avatarPic {
+    border: 2px solid $primary;
+  }
+  .toWhom {
+    font-weight: bold !important;
+    color: black;
+  }
+
+  //Footer
+  ion-footer .toolbar-background {
+    background-color: $primary !important;
   }
 }
