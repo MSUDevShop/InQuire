@@ -65,7 +65,7 @@ export class HomePage {
       console.log(this.user);
       this.questions = this.questions.allQuestions;
       for (let question of this.user.questionsToMe) {
-        if (question.answer != "") {
+        if (question.answer != "" && question.answer != null) {
           this.answered++;
           this.moneyRaised+=question.value;
         }

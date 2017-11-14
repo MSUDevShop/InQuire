@@ -41,7 +41,7 @@
         <h2 text-capitalize><strong>{{user.fullName}}</strong></h2>
         <div>
           <p> 7.5K Followers </p>
-          <p [style.color]="'#57BB99'"> 32.3K Raised </p>
+          <p [style.color]="'#57BB99'"> {{moneyRaised | currency:'USD':'symbol-narrow':'1.0-1'}} Raised </p>
         </div>
       </ion-item>
     </ion-list>
