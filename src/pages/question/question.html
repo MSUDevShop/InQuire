@@ -7,34 +7,51 @@
   <ion-content padding>
 
     <form (ngSubmit)="submitQuestion()">
-      <ion-item>
-        <ion-avatar item-start>
-          <img [src]="influencer.profilePic" />
-          <!-- <img src="assets/logo.png" /> -->
-        </ion-avatar>
-        <p> To: <span class="toWhom" text-capitalize> {{influencer.fullName}} </span> </p>
-      </ion-item>
-      <ion-item>
-        <ion-textarea autoComplete="on" spellcheck="on" [(ngModel)]="newQuestion.text"  autocorrect="on" type="text" ng-trim="false" placeholder="Ask your question here..." name="description" maxlength="140" autosize></ion-textarea>
-      </ion-item>
-      <span class="charLeft" float-right>{{140 - newQuestion.text.length}}</span>
-      <!-- Slider of values between 1-100 -->
+      <ion-list>
+        <ion-item>
+          <ion-avatar item-start>
+            <img [src]="influencer.profilePic" />
+            <!-- <img src="assets/logo.png" /> -->
+          </ion-avatar>
+          <p> To: <span class="toWhom" text-capitalize> {{influencer.fullName}} </span> </p>
+        </ion-item>
+        <ion-item>
+          <ion-textarea autoComplete="on" spellcheck="on" [(ngModel)]="newQuestion.text"  autocorrect="on" type="text" ng-trim="false" placeholder="Ask your question here..." name="description" maxlength="140" autosize></ion-textarea>
+        </ion-item>
+        <span class="charLeft" float-right>{{140 - newQuestion.text.length}}</span>
+        <!-- Slider of values between 1-100 -->
+        <ion-list-header>
+          Value
+          <ion-badge float-right>${{newQuestion.value}}</ion-badge>
+        </ion-list-header>
+        <ion-item>
+          <!-- <div class="money"> -->
+              <!-- <span>{{newQuestion.value}}</span> -->
+          <!-- </div>   -->
+            <ion-range min="1" max="200" [(ngModel)]="newQuestion.value" name="value" color="secondary">
+              <ion-label range-left>$1</ion-label>
+              <ion-label range-right>$200</ion-label>
+              <ion-label range-right style="cursor: pointer;">
+                  <ion-icon name="more" (click)="customValue()"></ion-icon>
+              </ion-label>
+            </ion-range>
+        </ion-item>
+      </ion-list>
+      <ion-list>
+
       <ion-list-header>
-        Value
-        <ion-badge float-right>${{newQuestion.value}}</ion-badge>
+        Charities
       </ion-list-header>
       <ion-item>
-        <!-- <div class="money"> -->
-            <!-- <span>{{newQuestion.value}}</span> -->
-        <!-- </div>   -->
-          <ion-range min="1" max="200" [(ngModel)]="newQuestion.value" name="value" color="secondary">
-            <ion-label range-left>$1</ion-label>
-            <ion-label range-right>$200</ion-label>
-            <ion-label range-right style="cursor: pointer;">
-                <ion-icon name="more" (click)="customValue()"></ion-icon>
-            </ion-label>
-          </ion-range>
+        <ion-scroll scrollX="true">
+          <div class="groupImg" *ngFor="let charity of charities" text-center>
+            <img [src]="charity.photo" *ngIf="!charity.selected" (tap)="selectCharity(charity)" />
+            <img class="selected" [src]="charity.photo" *ngIf="charity.selected" (tap)="selectCharity(charity)" />
+          </div>
+        </ion-scroll>
       </ion-item>
+    </ion-list>
+
 
 
       <button ion-button type="submit" block>Ask my question!</button>

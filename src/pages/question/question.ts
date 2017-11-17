@@ -7,6 +7,20 @@ import gql from 'graphql-tag';
 
 import 'rxjs/add/operator/toPromise';
 
+
+class charity {
+   name: string;
+   photo: string;
+   selected: boolean
+   constructor(name: string, photo: string, selected: boolean = false) {
+      this.name = name;
+      this.photo = photo;
+      selected = selected
+  }
+ }
+
+
+
 @IonicPage()
 @Component({
   selector: 'page-question',
@@ -14,18 +28,23 @@ import 'rxjs/add/operator/toPromise';
 })
 
 export class QuestionPage {
-/*
-  This page is dynamically created when a user selects a influencer to ask a question to
-  input NavParams is a influencer object
-*/
   user = <any>{}; // Object to hold user data from gql (basically a temp variable)
   userId: any; // The current users ID
+
+  charities = <any>[];
 
   constructor(public navCtrl: NavController,
               public apollo: Angular2Apollo,
               public navParams: NavParams,
               public alertCtrl: AlertController,
               public toastCtrl: ToastController) {
+
+
+                //Adds all charities to array
+                for (let i = 1; i <= 12; i++) {
+                  this.charities.push(new charity("c"+i, "assets/charities/c"+i+".jpg"))
+                }
+
                 // gql Query that returns the current users ID
                 this.apollo.query({
                   query: gql`
@@ -148,6 +167,13 @@ export class QuestionPage {
       ]
     });
     prompt.present();
+  }
+
+  selectCharity(charity) {
+    for (let c of this.charities) {
+      c.selected = false;
+    }
+    charity.selected = true;
   }
 
 }

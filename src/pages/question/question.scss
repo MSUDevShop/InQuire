@@ -15,4 +15,27 @@ page-question {
       font-weight: bold;
     }
 
+    .groupImg img {
+      border-radius: 50%;
+      filter: grayscale(100%);
+      width: 70px;
+      height: 70px;
+    }
+    .selected {
+      filter: grayscale(0%) !important;
+      border: 2px solid green;
+    }
+    .groupImg {
+      display: inline-block;
+      width: 70px;
+      margin-left: 3%;
+    }
+    ion-scroll {
+      height: 100px;
+      width: 90vw;
+    }
+    ion-scroll .scroll-content {
+      padding: 0px !important;
+    }
+
 }
