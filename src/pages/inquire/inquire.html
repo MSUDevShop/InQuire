@@ -49,7 +49,7 @@
   <div *ngIf="isInfluencer">
     <!-- Header image and text  -->
 
-      <ion-list>
+      <ion-list *ngIf="questionsToMe.length != 0">
         <ion-item-sliding>
           <ion-item *ngFor="let question of questionsToMe" (tap)="gotoAnswer(question)">
             <p text-wrap id="question" padding-bottom font-bold><strong>{{this.question.question}}?</strong></p>
@@ -65,12 +65,17 @@
             </button>
           </ion-item-options>
           <ion-item-options side="right">
-            <button ion-button color="danger">
+            <button ion-button color="light">
               <h3>NO</h3>
+            </button>
+            <button ion-button color="danger">
+                <ion-icon name="trash"></ion-icon>
             </button>
           </ion-item-options>
         </ion-item-sliding>
       </ion-list>
+
+      <div *ngIf="questionsToMe.length == 0" text-center padding-top> No more questions. Come back later.</div>
   </div>
 
 </ion-content>
