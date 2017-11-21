@@ -17,12 +17,12 @@ page-influencer-profile {
     left: 0;
     width: 100%;
     margin-top: -16px;
-    height: 160px;
+    height: 180px;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     text-align: center;
-    background-image: url('https://github.com/yannbf/ionic3-components/blob/master/src/assets/img/background/background-5.jpg?raw=true');
+    background-image: url('http://www.intrawallpaper.com/static/images/Hd-Backgrounds-371_VimPtrk.jpg');
   }
   // Profile content
   #content {
@@ -38,6 +38,7 @@ page-influencer-profile {
     width: 130px;
     margin: 0 auto 0;
     box-shadow: 0px 11px 20px -3px rgba(142, 136, 146, 0.75);
+    border: 2px solid white;
   }
   #profile-info {
     position: absolute;

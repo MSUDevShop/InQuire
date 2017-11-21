@@ -38,6 +38,9 @@ export class HomePage {
               id
               fullName
               profilePic
+              followers {
+                id
+              }
             }
             user{
               id
