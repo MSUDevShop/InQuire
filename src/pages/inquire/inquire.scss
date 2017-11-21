@@ -7,6 +7,20 @@ page-inquire {
     background-image: url('../assets/lebron-influencer.jpg');
     background-size: cover;
   }
+  .backgroundbg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: black;
+    opacity: 0.3;
+    z-index: -2;
+  }
+  ion-avatar img {
+    height: 45px !important;
+    width: 45px !important;
+  }
   h1 {
     color: white;
     font-size: 2.5em;
@@ -15,12 +29,12 @@ page-inquire {
   }
   .infcontent {
       background-color: white;
-      opacity: 0.9;
+      opacity: 0.85;
   }
   .top3 {
     img {
       border-radius: 50%;
-      border: 2px solid rgb(187, 187, 187);
+      border: 2px solid #929292;
       width: 80px;
       height: 80px;
     }

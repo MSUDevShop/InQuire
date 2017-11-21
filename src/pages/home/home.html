@@ -4,7 +4,7 @@
   </ion-toolbar>
 </ion-header>
 
-  <ion-content padding [style.background-color]="user.isInfluencer ? '#2a323a' : 'none' ">
+  <ion-content [style.background-color]="user.isInfluencer ? '#2a323a' : 'none' ">
     <div *ngIf="!user.isInfluencer">
       <ion-list>
         <flash-card *ngFor="let question of questions">

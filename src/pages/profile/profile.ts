@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { SettingsPage } from '../settings/settings';
+import { InfluencerProfilePage } from '../influencer-profile/influencer-profile';
 
 import { Angular2Apollo } from 'angular2-apollo';
 import gql from 'graphql-tag';
@@ -13,31 +14,19 @@ import 'rxjs/add/operator/toPromise';
 })
 export class ProfilePage {
   user = <any>{};
-  questions = <any>[];
+  following = <any>[];
 
   constructor(public navCtrl: NavController, public apollo: Angular2Apollo) {
     this.getUserInfo().then(({data}) => {
       this.user = data;
       this.user = this.user.user;
-      for(let question of this.user.questionsToMe) {
-        if (!question.answer) {
-          this.questions.push(question);
-        }
-      }
-      console.log(this.user);
+      this.following = this.user.following;
     });
   }
   ionViewDidEnter() {
     this.getUserInfo().then(({data}) => {
       this.user = data;
       this.user = this.user.user;
-      this.questions = [];
-      for(let question of this.user.questionsToMe) {
-        if (!question.answer) {
-          this.questions.push(question);
-        }
-      }
-      console.log(this.user);
     });
   }
 
@@ -51,14 +40,18 @@ export class ProfilePage {
           profilePic
           fullName
           isInfluencer
-          questionsToMe {
+          questions {
             id
             question
             value
             answer
-            user {
+          }
+          following {
+            id
+            fullName
+            profilePic
+            followers {
               id
-              fullName
             }
           }
         }
@@ -70,6 +63,10 @@ export class ProfilePage {
 
   goToSettingsPage() {
     this.navCtrl.push(SettingsPage);
+  }
+
+  gotoInfluencer(influencer) {
+    this.navCtrl.push(InfluencerProfilePage, {influencer: influencer});
   }
 
 }

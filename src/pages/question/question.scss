@@ -30,6 +30,12 @@ page-question {
       width: 70px;
       margin-left: 3%;
     }
+    .groupImg:first-child {
+      margin: 0px;
+    }
+    .groupImg:last-child {
+      margin-right: 10%;
+    }
     ion-scroll {
       height: 100px;
       width: 90vw;
