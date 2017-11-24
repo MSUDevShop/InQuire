@@ -14,9 +14,10 @@
 
 
 <ion-content>
-  <div class="backgroundbg"></div>
+  <div class="background" *ngIf="!isInfluencer"></div>
+  <div class="backgroundbg" *ngIf="!isInfluencer"></div>
 
-  <div text-center class="header">
+  <div text-center class="header" *ngIf="!isInfluencer">
     <h1>Influencers</h1>
   </div>
 

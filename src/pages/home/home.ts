@@ -52,10 +52,14 @@ export class HomePage {
             isInfluencer
             profilePic
             fullName
+            goal
             questionsToMe {
               id
               answer
               value
+            }
+            _followersMeta{
+              count
             }
           }
         }

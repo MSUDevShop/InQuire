@@ -17,30 +17,59 @@ export class InfluencerProfilePage {
   userId: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public apollo: Angular2Apollo) {
-    this.influencer = this.navParams.get("influencer");
-    this.followers = this.influencer.followers.length;
-    console.log(this.influencer);
-    this.apollo.query({
-      query: gql`
+    if (this.navParams.get("influencer")) {
+      this.influencer = this.navParams.get("influencer");
+      this.followers = this.influencer.followers.length;
+      this.apollo.query({
+        query: gql`
+          query {
+            user {
+              id
+              following {
+                id
+              }
+            }
+          }
+        `, fetchPolicy: "network-only"
+      }).toPromise().then(({data}) => {
+        let following = <any>[];
+        following = data;
+        this.userId = following.user.id;
+        following = following.user.following;
+        var that = this;
+        if (following.find(function(e){return e.id==that.influencer.id})) {
+          this.isfollowing = true;
+        }
+      });
+    } else {
+      this.apollo.query({
+        query: gql`
         query {
           user {
             id
-            following {
+            email
+            profilePic
+            fullName
+            isInfluencer
+            questions {
+              id
+              question
+              value
+              answer
+            }
+            followers {
               id
             }
           }
         }
-      `, fetchPolicy: "network-only"
-    }).toPromise().then(({data}) => {
-      let following = <any>[];
-      following = data;
-      this.userId = following.user.id;
-      following = following.user.following;
-      var that = this;
-      if (following.find(function(e){return e.id==that.influencer.id})) {
-        this.isfollowing = true;
-      }
-    });
+        `,
+        fetchPolicy: "network-only"
+      }).toPromise().then(({data}) => {
+        this.influencer = data;
+        this.influencer = this.influencer.user;
+        this.followers = this.influencer.followers.length;
+      });
+    }
   }
 
   follow() {
