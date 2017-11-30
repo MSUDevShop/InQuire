@@ -35,10 +35,19 @@
   content: url('../assets/logo.png');
   max-width: 25%;
 }
+.ion-md-applogo {
+  max-width: 40% !important;
+}
 .ion-ios-applogo-outline, .ion-md-applogo-outline {
   content: url('../assets/logo.png');
   filter: grayscale(90%) !important;
   max-width: 25%;
+}
+.tab-button[aria-selected=false] {
+  filter: grayscale(100%) !important;
+}
+.tab-button[aria-selected=false] .ion-md-applogo {
+  opacity: 0.3 !important;
 }
 
 * {

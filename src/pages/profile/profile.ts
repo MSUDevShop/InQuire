@@ -15,12 +15,16 @@ import 'rxjs/add/operator/toPromise';
 export class ProfilePage {
   user = <any>{};
   following = <any>[];
+  donated: any = 0;
 
   constructor(public navCtrl: NavController, public apollo: Angular2Apollo) {
     this.getUserInfo().then(({data}) => {
       this.user = data;
       this.user = this.user.user;
       this.following = this.user.following;
+      for (let question of this.user.questions) {
+          this.donated += +question.value;
+      }
     });
   }
   ionViewDidEnter() {
