@@ -4,6 +4,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Angular2Apollo } from 'angular2-apollo';
 import gql from 'graphql-tag';
 
+//Pages
+import { QuestionPage } from '../question/question';
+
 @IonicPage()
 @Component({
   selector: 'page-influencer-profile',
@@ -110,6 +113,10 @@ export class InfluencerProfilePage {
       this.isfollowing = false;
       this.followers--;
     });
+  }
+
+  askQuestion() {
+    this.navCtrl.push(QuestionPage, { influencer: this.influencer });
   }
 
 }

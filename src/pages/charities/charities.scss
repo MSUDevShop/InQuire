@@ -1,13 +1,14 @@
 page-charities {
   ion-content {
     overflow-y: hidden;
+    overflow-x: hidden;
   }
   ion-row {
-    height: 80vh;
+    height: 70vh;
   }
   .backgroundbg {
     width: 100%;
-    height: 100%;
+    height: 200%;
     position: absolute;
     z-index: -2;
     background-image: url('../assets/images/loginbg.png');
@@ -16,7 +17,19 @@ page-charities {
   }
   ion-col img {
     border-radius: 50%;
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
+  }
+  p {
+    margin: 0;
+  }
+  h1 {
+    margin-bottom: 0;
+  }
+  @media (min-width: 400px) {
+    ion-col img {
+      width: 100px;
+      height: 100px;
+    }
   }
 }

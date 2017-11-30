@@ -8,7 +8,11 @@
 
 
 <ion-content>
-  <div id="profile-bg"></div>
+  <div id="profile-bg"><img [src]="influencer.profilePic" /></div>
+
+  <ion-fab top right>
+    <button ion-fab mini outline (tap)="askQuestion()"><ion-icon name="help"></ion-icon></button>
+  </ion-fab>
 
   <div id="content">
     <div id="profile-info" padding *ngIf="influencer">

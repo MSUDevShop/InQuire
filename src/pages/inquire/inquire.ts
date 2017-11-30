@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { QuestionPage } from '../question/question';
+
 
 import { Angular2Apollo } from 'angular2-apollo';
 import gql from 'graphql-tag';
 
+import { QuestionPage } from '../question/question';
 import { AnswerPage } from '../answer/answer';
+import { InfluencerProfilePage } from '../influencer-profile/influencer-profile';
 
 
 @Component({
@@ -37,6 +39,9 @@ export class InquirePage {
               id
               fullName
               profilePic
+              followers {
+                id
+              }
             }
             user {
               id
@@ -99,32 +104,34 @@ export class InquirePage {
   }
 
   getItems(searchbar) {
-  // Reset items back to all of the items
-  this.initializeItems();
-
-  // set q to the value of the searchbar
-  var q = searchbar.srcElement.value;
-
-  // if the value is an empty string don't filter the items
-  if (!q) {
+    // Reset items back to all of the items
     this.initializeItems();
-    return;
-  }
 
-  this.influencersData = this.influencersData.filter((v) => {
-    if(v.fullName && q) {
-      if (v.fullName.toLowerCase().indexOf(q.toLowerCase()) > -1) {
-        return true;
-      }
-      return false;
+    // set q to the value of the searchbar
+    var q = searchbar.srcElement.value;
+
+    // if the value is an empty string don't filter the items
+    if (!q) {
+      this.initializeItems();
+      return;
     }
-  });
 
-  console.log(q, this.influencersData.length);
-}
+    this.influencersData = this.influencersData.filter((v) => {
+      if(v.fullName && q) {
+        if (v.fullName.toLowerCase().indexOf(q.toLowerCase()) > -1) {
+          return true;
+        }
+        return false;
+      }
+    });
+  }
 
   gotoAnswer(question) {
     this.navCtrl.push(AnswerPage, {question: question, user: this.user});
+  }
+
+  gotoInfluencer(influencer) {
+    this.navCtrl.push(InfluencerProfilePage, {influencer: influencer});
   }
 
 }

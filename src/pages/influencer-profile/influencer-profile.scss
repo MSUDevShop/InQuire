@@ -12,7 +12,7 @@ page-influencer-profile {
     color: #444;
   }
   // Cover image
-  #profile-bg {
+  #profile-bg img {
     position: absolute;
     left: 0;
     width: 100%;
@@ -22,7 +22,7 @@ page-influencer-profile {
     background-repeat: no-repeat;
     background-position: center;
     text-align: center;
-    background-image: url('http://www.hdwallpaperspulse.com/wp-content/uploads/2016/02/26/night-lights-train-hd-background.jpg');
+    filter: blur(2px);
   }
   // Profile content
   #content {

@@ -15,7 +15,7 @@
 
 <ion-content>
   <div class="background" *ngIf="!isInfluencer"></div>
-  <div class="backgroundbg" *ngIf="!isInfluencer"></div>
+  <!-- <div class="backgroundbg" *ngIf="!isInfluencer"></div> -->
 
   <div text-center class="header" *ngIf="!isInfluencer">
     <h1>Influencers</h1>
@@ -31,7 +31,7 @@
     </ion-col>
   </ion-row> -->
   <ion-row padding-top>
-    <ion-col class="top3" col-4 *ngFor="let influencer of top3" text-center (tap)="openQuestionPage(influencer)">
+    <ion-col class="top3" col-4 *ngFor="let influencer of top3" text-center (tap)="gotoInfluencer(influencer)">
       <img  [src]="influencer.profilePic" />
       <h6>{{influencer.fullName}}</h6>
     </ion-col>
