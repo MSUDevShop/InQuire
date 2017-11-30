@@ -2,6 +2,11 @@
 
   <ion-navbar>
     <ion-title *ngIf="influencer">{{influencer.fullName}}</ion-title>
+    <ion-buttons end *ngIf="!isPushed">
+      <button ion-button icon-only (click)="goToSettingsPage()">
+         <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>

@@ -6,6 +6,7 @@ import gql from 'graphql-tag';
 
 //Pages
 import { QuestionPage } from '../question/question';
+import { SettingsPage } from '../settings/settings';
 
 @IonicPage()
 @Component({
@@ -19,7 +20,12 @@ export class InfluencerProfilePage {
   isfollowing: boolean = false;
   userId: any;
 
+  isPushed: boolean = false;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public apollo: Angular2Apollo) {
+    if (this.navCtrl.getViews().length >= 1) {
+      this.isPushed = true;
+    }
     if (this.navParams.get("influencer")) {
       this.influencer = this.navParams.get("influencer");
       this.followers = this.influencer.followers.length;
@@ -117,6 +123,10 @@ export class InfluencerProfilePage {
 
   askQuestion() {
     this.navCtrl.push(QuestionPage, { influencer: this.influencer });
+  }
+
+  goToSettingsPage() {
+    this.navCtrl.push(SettingsPage);
   }
 
 }

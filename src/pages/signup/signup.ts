@@ -52,27 +52,7 @@ export class SignupPage {
       toast.present();
     }
     else {
-      if (this.influencerCode) {
-        this.checkAccessCode().then(({data}) => {
-          let allAccessCodes = <any>[];
-          allAccessCodes = data;
-          allAccessCodes = allAccessCodes.allAccessCodes;
-          if (allAccessCodes.length) {
-            this.correctCode = true;
-            this.createandSignUp();
-          } else {
-            let toast = this.toastCtrl.create({
-              message: 'Access code is not correct. Please try again',
-              duration: 3000,
-              position: 'top'
-            });
-            toast.present();
-            return;
-          }
-        });
-      } else {
         this.createandSignUp();
-      }
     }
   }
 
@@ -111,7 +91,6 @@ export class SignupPage {
       });
   }
 
-
   createUser(){
       return this.apollo.mutate({
         mutation: gql`
@@ -136,7 +115,7 @@ export class SignupPage {
           email: this.email,
           password: this.password,
           profilePic: this.imageUri,
-          isInfluencer: this.correctCode
+          isInfluencer: this.isInfluencer
         }
       }).toPromise();
   }
@@ -155,20 +134,6 @@ export class SignupPage {
         variables: {
           email: this.email,
           password: this.password,
-        }
-      }).toPromise();
-  }
-
-  checkAccessCode() {
-      return this.apollo.query({
-        query: gql`
-          query allAccessCodes($accessCode: String!) {
-            allAccessCodes(filter: {accessCode: $accessCode}){
-              id
-            }
-          }
-        `, variables: {
-            accessCode: this.influencerCode
         }
       }).toPromise();
   }
