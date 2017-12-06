@@ -1,0 +1,42 @@
+<!--
+  Generated template for the InfluencerQuestionsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Questions</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-list *ngIf="questionsToMe.length != 0">
+    <ion-item-sliding>
+      <ion-item *ngFor="let question of questionsToMe" (tap)="gotoAnswer(question)">
+        <p text-wrap id="question" padding-bottom font-bold><strong>{{this.question.question}}?</strong></p>
+        <h5>Asked by:<span id="asker"> {{question.user.fullName}}</span></h5>
+      </ion-item>
+      <ion-item-options side="left">
+        <button ion-button color="secondary">
+          <h3>YES</h3>
+        </button>
+      </ion-item-options>
+      <ion-item-options side="right">
+        <button ion-button color="danger">
+          <h3>NO</h3>
+        </button>
+        <button ion-button color="light">
+            <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <div *ngIf="questionsToMe.length == 0" text-center padding-top> No more questions. Come back later.</div>
+
+</ion-content>

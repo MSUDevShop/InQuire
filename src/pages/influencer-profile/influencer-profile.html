@@ -15,7 +15,7 @@
 <ion-content>
   <div id="profile-bg"><img [src]="influencer.profilePic" /></div>
 
-  <ion-fab top right>
+  <ion-fab top right *ngIf="isPushed">
     <button ion-fab mini outline (tap)="askQuestion()"><ion-icon name="help"></ion-icon></button>
   </ion-fab>
 
@@ -29,14 +29,14 @@
         </ion-col>
       </ion-row>
 
-      <button ion-button small *ngIf="!isfollowing" class="follow-button" (click)="follow()">Follow</button>
-      <button ion-button small outline *ngIf="isfollowing" class="follow-button" (click)="unfollow()">Unfollow</button>
+      <button ion-button small *ngIf="!isfollowing && isPushed" class="follow-button" (click)="follow()">Follow</button>
+      <button ion-button small outline *ngIf="isfollowing && isPushed" class="follow-button" (click)="unfollow()">Unfollow</button>
       <ion-list>
         <ion-list-header>
           Posts
         </ion-list-header>
         <ion-item>
-
+            No posts yet!
         </ion-item>
       </ion-list>
     </div>

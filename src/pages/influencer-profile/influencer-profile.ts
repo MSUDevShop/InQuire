@@ -23,7 +23,8 @@ export class InfluencerProfilePage {
   isPushed: boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public apollo: Angular2Apollo) {
-    if (this.navCtrl.getViews().length >= 1) {
+    console.log(this.navCtrl.getViews().length);
+    if (this.navCtrl.getViews().length > 0) {
       this.isPushed = true;
     }
     if (this.navParams.get("influencer")) {

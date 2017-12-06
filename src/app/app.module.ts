@@ -15,6 +15,7 @@ import { SettingsPage } from '../pages/settings/settings';
 import { AnswerPage } from '../pages/answer/answer';
 import { InfluencerProfilePage } from '../pages/influencer-profile/influencer-profile';
 import { CharitiesPage } from '../pages/charities/charities';
+import { InfluencerQuestionsPage } from '../pages/influencer-questions/influencer-questions';
 
 //Apollo config
 import { provideClient } from './client';
@@ -49,7 +50,8 @@ import { FlashCardComponent } from '../components/flash-card/flash-card';
     AnswerPage,
     FlashCardComponent,
     InfluencerProfilePage,
-    CharitiesPage
+    CharitiesPage,
+    InfluencerQuestionsPage
   ],
   imports: [
     ApolloModule.withClient(provideClient),
@@ -71,7 +73,8 @@ import { FlashCardComponent } from '../components/flash-card/flash-card';
     SettingsPage,
     AnswerPage,
     InfluencerProfilePage,
-    CharitiesPage
+    CharitiesPage,
+    InfluencerQuestionsPage
   ],
   providers: [
     Camera,

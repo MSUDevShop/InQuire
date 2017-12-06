@@ -1,0 +1,17 @@
+page-influencer-questions {
+  $primary: map-get($colors, primary);
+  #influencer, #asker, #views {
+    color: $primary
+  }
+  #question {
+    font-size: 1.1em;
+    color: black !important;
+  }
+  .button-inner {
+    font-size: 1.5em;
+    ion-icon {
+      padding-bottom: 0 !important;
+    }
+  }
+
+}

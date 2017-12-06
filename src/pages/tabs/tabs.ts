@@ -5,6 +5,7 @@ import { ProfilePage } from '../profile/profile';
 import { InquirePage } from '../inquire/inquire';
 import { CharitiesPage } from '../charities/charities';
 import { InfluencerProfilePage } from '../influencer-profile/influencer-profile';
+import { InfluencerQuestionsPage } from '../influencer-questions/influencer-questions';
 
 
 import { Angular2Apollo } from 'angular2-apollo';
@@ -16,7 +17,7 @@ import gql from 'graphql-tag';
 export class TabsPage {
 
   tab1Root = HomePage;
-  tab2Root = InquirePage;
+  tab2Root: any;
   tab3Root: any;
   tab4Root = CharitiesPage;
 
@@ -36,8 +37,10 @@ export class TabsPage {
       this.user = data;
       this.user = this.user.user;
       if (this.user.isInfluencer == true) {
+        this.tab2Root = InfluencerQuestionsPage;
         this.tab3Root = InfluencerProfilePage;
       } else {
+        this.tab2Root = InquirePage;
         this.tab3Root = ProfilePage;
       }
     });

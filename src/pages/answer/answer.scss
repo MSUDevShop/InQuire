@@ -24,6 +24,9 @@ page-answer {
     font-weight: bold !important;
     color: black;
   }
+  .question ion-item:first-child {
+    border-top: 0px !important;
+  }
 
   //Footer
   ion-footer .toolbar-background {

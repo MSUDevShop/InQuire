@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-
-
 import { Angular2Apollo } from 'angular2-apollo';
 import gql from 'graphql-tag';
 
@@ -47,16 +45,6 @@ export class InquirePage {
               id
               isInfluencer
               profilePic
-              questionsToMe {
-                id
-                question
-                value
-                answer
-                user {
-                  id
-                  fullName
-                }
-              }
             }
           }
         `
@@ -68,15 +56,6 @@ export class InquirePage {
         this.userId = temp.user.id;
         this.user = temp.user;
         this.isInfluencer = temp.user.isInfluencer;
-        if (this.isInfluencer) {
-          // this.questionsToMe = temp.user.questionsToMe;
-          this.questionsToMe = [];
-          for(let question of temp.user.questionsToMe) {
-            if (!question.answer) {
-              this.questionsToMe.push(question);
-            }
-          }
-        }
         for (let influencer of temp.allUsers) {
           if (influencer.id != this.userId) {
             this.influencers.push(influencer);
