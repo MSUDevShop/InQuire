@@ -40,7 +40,7 @@
     <ion-list>
       <button ion-item
               *ngFor="let influencer of influencersData"
-              (tap)="openQuestionPage(influencer)">
+              (tap)="gotoInfluencer(influencer)">
         <ion-avatar item-start> <!-- Influencer avatar -->
           <img src={{influencer.profilePic}}/>
         </ion-avatar>

@@ -24,7 +24,8 @@ page-signup{
   }
 
   .profileHeader {
-    margin: 5%;
+    // margin: 5%;
+    margin-top: 150px;
   }
 
   .avatar {
@@ -38,12 +39,12 @@ page-signup{
     left: 0;
     width: 100%;
     margin-top: -16px;
-    height: 180px;
+    height: 300px;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     text-align: center;
-    filter: blur(2px);
+    z-index: -1;
   }
   #no-profile-bg {
     position: absolute;
@@ -51,12 +52,12 @@ page-signup{
     left: 0;
     top: 0;
     width: 100%;
-    height: 180px;
+    height: 300px;
     z-index: -1;
   }
   @media (max-width: 400px) {
     #no-profile-bg {
-      height: 150px !important;
+      height: 250px !important;
     }
   }
 }

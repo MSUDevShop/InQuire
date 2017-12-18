@@ -5,17 +5,17 @@
 </ion-header>
 
 <ion-content padding>
+  <div id="profile-bg" *ngIf="bgImage" ><img [src]="bgImage" /></div>
+  <div id="no-profile-bg" *ngIf="!bgImage" ></div>
 
   <div class="profileHeader">
-    <div id="profile-bg" *ngIf="bgImage" ><img [src]="bgImage" /></div>
-    <div id="no-profile-bg" *ngIf="!bgImage" ></div>
     <ion-fab right class="pop-in" (click)="changeBgPic()" [ngClass]="{'pop-out': fabGone}" style="top: 2%; right: 2%">
       <button ion-fab mini color="dark"><ion-icon name="camera"></ion-icon></button>
     </ion-fab>
 
       <ion-avatar *ngIf="!classMateView" (click)="changePic()">
         <img class="avatar" [src]="imageUri">
-        <ion-fab right class="pop-in" [ngClass]="{'pop-out': fabGone}" style="top: 22%; right: 27%">
+        <ion-fab right class="pop-in" [ngClass]="{'pop-out': fabGone}" style="top: 45%; right: 27%">
           <button ion-fab mini color="primary"><ion-icon name="camera"></ion-icon></button>
         </ion-fab>
       </ion-avatar>

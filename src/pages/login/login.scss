@@ -10,14 +10,17 @@ page-login{
     z-index: -2;
     background-image: url('../assets/images/loginbg.png');
     background-size: cover;
-    filter: blur(12px);
+    background-repeat: no-repeat;
+    filter: brightness(50%);
+    filter: blur(10px);
   }
   .background {
+    position: absolute;
     width: 100%;
     height: 100%;
     background-image: url('../assets/images/login.png');
-    // filter: brightness(50%);
     background-size: cover;
+    background-repeat: no-repeat;
   }
 
   .loginform {
