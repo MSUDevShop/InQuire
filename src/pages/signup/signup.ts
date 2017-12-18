@@ -27,6 +27,7 @@ export class SignupPage {
   userInfo = <any>{};
 
   imageUri = "https://msudenver.edu/media/sampleassets/profile-placeholder.png";
+  bgImage = "";
 
 
   constructor(public navCtrl: NavController, public apollo: Angular2Apollo,
@@ -99,12 +100,15 @@ export class SignupPage {
                             $fullName: String!,
                             $userName: String!,
                             $profilePic: String,
+                            $backgroundPic: String,
                             $isInfluencer: Boolean){
 
           createUser(authProvider: { email: {email: $email, password: $password}},
                      fullName: $fullName,
                      userName: $userName,
-                     profilePic: $profilePic, isInfluencer: $isInfluencer){
+                     profilePic: $profilePic,
+                     backgroundPic: $backgroundPic,
+                     isInfluencer: $isInfluencer){
             id
           }
         }
@@ -115,6 +119,7 @@ export class SignupPage {
           email: this.email,
           password: this.password,
           profilePic: this.imageUri,
+          backgroundPic: this.bgImage,
           isInfluencer: this.isInfluencer
         }
       }).toPromise();
@@ -159,6 +164,31 @@ export class SignupPage {
       this.Camera.getPicture(options).then((ImageData) => {
         let base64Image = "data:image/jpeg;base64," + ImageData;
         this.imageUri = base64Image;
+      })
+    }
+  }
+
+  changeBgPic() {
+    let options: CameraOptions = {
+      quality: 50,
+      destinationType: 0,
+      targetWidth: 500,
+      targetHeight: 500,
+      encodingType: 0,
+      sourceType: 0,
+      correctOrientation: true,
+      allowEdit: true
+
+    };
+    if (this.platform.is('android')) {
+      this.Camera.getPicture(options).then((ImageData) => {
+        let base64Image = "data:image/jpeg;base64," + ImageData;
+        this.bgImage = base64Image;
+      });
+    } else if (this.platform.is('ios')) {
+      this.Camera.getPicture(options).then((ImageData) => {
+        let base64Image = "data:image/jpeg;base64," + ImageData;
+        this.bgImage = base64Image;
       })
     }
   }
