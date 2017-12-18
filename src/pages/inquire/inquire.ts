@@ -37,6 +37,7 @@ export class InquirePage {
               id
               fullName
               profilePic
+              backgroundPic
               followers {
                 id
               }

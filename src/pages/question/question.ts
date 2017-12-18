@@ -40,11 +40,6 @@ export class QuestionPage {
               public toastCtrl: ToastController) {
 
 
-                //Adds all charities to array
-                for (let i = 1; i <= 12; i++) {
-                  this.charities.push(new charity("c"+i, "assets/charities/c"+i+".jpg"))
-                }
-
                 // gql Query that returns the current users ID
                 this.apollo.query({
                   query: gql`
@@ -54,10 +49,21 @@ export class QuestionPage {
                         profilePic
                         fullName
                       }
+                      allCharities {
+                        id
+                        name
+                        photo
+                      }
                     }
                   `
                 }).toPromise().then(({data}) => {
                   this.user = data;
+                  
+                  //Adds all charities to array
+                  for (let c of this.user.allCharities) {
+                    this.charities.push(new charity(c.name, c.photo));
+                  }
+
                   this.user = this.user.user;
                   // Convoluted way of storing the users ID
                   this.userId = this.user.id;

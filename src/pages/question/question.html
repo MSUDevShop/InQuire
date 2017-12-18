@@ -47,6 +47,7 @@
           <div class="groupImg" *ngFor="let charity of charities" text-center>
             <img [src]="charity.photo" *ngIf="!charity.selected" (tap)="selectCharity(charity)" />
             <img class="selected" [src]="charity.photo" *ngIf="charity.selected" (tap)="selectCharity(charity)" />
+            <!-- <p>{{charity.name}}</p> -->
           </div>
         </ion-scroll>
       </ion-item>
