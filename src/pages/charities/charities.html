@@ -20,7 +20,7 @@
   <p text-center> Click to donate </p>
 
   <ion-grid padding-top>
-    <ion-row>
+    <ion-row *ngIf="charities">
       <ion-col col-4 text-center *ngFor="let charity of charities">
         <img [src]="charity.photo" />
       </ion-col>

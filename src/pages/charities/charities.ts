@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { Angular2Apollo } from 'angular2-apollo';
+import gql from 'graphql-tag';
+import 'rxjs/add/operator/toPromise';
+
 /**
  * Generated class for the CharitiesPage page.
  *
@@ -26,10 +30,21 @@ export class CharitiesPage {
 
   charities = <any>[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    for (let i = 1; i <= 12; i++) {
-      this.charities.push(new charity("c"+i, "assets/charities/c"+i+".jpg"))
-    }
+  constructor(public navCtrl: NavController, public navParams: NavParams, public apollo: Angular2Apollo) {
+    this.apollo.query({
+      query: gql`
+        query {
+          allCharities{
+            id
+            name
+            photo
+          }
+        }
+      `
+    }).toPromise().then(({data}) => {
+      this.charities = data;
+      this.charities = this.charities.allCharities;
+    })
   }
 
 
