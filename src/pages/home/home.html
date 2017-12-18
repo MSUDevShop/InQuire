@@ -55,7 +55,7 @@
           <div class="progress">
             {{answered}}
           </div>
-          <round-progress [current]="answered" [max]="user.questionsToMe.length" [stroke]="10" [color]="'#57BB99'" [responsive]="true"></round-progress>
+          <round-progress [current]="answered" [max]="user.questionsToMe.length ? user.questionsToMe.length > 0 : 1" [stroke]="10" [color]="'#57BB99'" [responsive]="true"></round-progress>
         </ion-col>
         <ion-col col-2>
         </ion-col>
@@ -63,7 +63,7 @@
           <div class="progress">
             {{user.questionsToMe.length - answered}}
           </div>
-          <round-progress [current]="user.questionsToMe.length - answered" [max]="user.questionsToMe.length" [stroke]="10" [color]="'#E55558'" [responsive]="true"></round-progress>
+          <round-progress [current]="user.questionsToMe.length - answered" [max]="user.questionsToMe.length ? user.questionsToMe.length > 0 : 1" [stroke]="10" [color]="'#E55558'" [responsive]="true"></round-progress>
         </ion-col>
         <ion-col col-1>
         </ion-col>
@@ -77,8 +77,8 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-    <ion-list-header>
-      THIS MONTH
+    <ion-list-header padding-left>
+      THIS MONTH (GOAL: ${{user.goal}})
     </ion-list-header>
     <ion-grid class="moneyRaised">
       <ion-row text-center>

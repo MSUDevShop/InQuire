@@ -61,6 +61,7 @@ export class InfluencerProfilePage {
             profilePic
             fullName
             isInfluencer
+            backgroundPic
             questions {
               id
               question
