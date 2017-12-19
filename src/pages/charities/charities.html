@@ -23,6 +23,7 @@
     <ion-row *ngIf="charities">
       <ion-col col-4 text-center *ngFor="let charity of charities">
         <img [src]="charity.photo" />
+        <p> {{charity.name}} </p>
       </ion-col>
     </ion-row>
   </ion-grid>
