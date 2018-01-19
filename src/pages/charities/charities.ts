@@ -5,6 +5,8 @@ import { Angular2Apollo } from 'angular2-apollo';
 import gql from 'graphql-tag';
 import 'rxjs/add/operator/toPromise';
 
+// import { DonatePage }
+
 
 @IonicPage()
 @Component({
@@ -33,6 +35,10 @@ export class CharitiesPage implements OnInit {
       this.charities = data;
       this.charities = this.charities.allCharities;
     });
+  }
+
+  donate(charity) {
+      this.navCtrl.push('DonatePage', {charity: charity});
   }
 
 }

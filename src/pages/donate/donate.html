@@ -1,0 +1,71 @@
+<!--
+  Generated template for the DonatePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>donate</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <!-- <div>
+    <img [src]="cardImage" width="100%"/>
+    <ion-fab right class="pop-in" [ngClass]="{'pop-out': fabGone}" style="top: 17rem;">
+      <button ion-fab mini (click)="scanCard()" color="dark"><ion-icon name="camera"></ion-icon></button>
+    </ion-fab>
+  </div> -->
+  <ion-list>
+    <ion-item>
+      <ion-avatar item-start>
+        <img [src]="charity.photo" />
+        <!-- <img src="assets/logo.png" /> -->
+      </ion-avatar>
+      <p> To: <span class="toWhom" text-capitalize> {{charity.name}} </span> </p>
+    </ion-item>
+    <ion-list-header>
+      Value
+      <ion-badge float-right>${{donateAmount}}</ion-badge>
+    </ion-list-header>
+    <ion-item>
+      <!-- <div class="money"> -->
+          <!-- <span>{{newQuestion.value}}</span> -->
+      <!-- </div>   -->
+        <ion-range min="1" max="200" [(ngModel)]="donateAmount" name="value" color="secondary">
+          <ion-label range-left>$1</ion-label>
+          <ion-label range-right>$200</ion-label>
+          <!-- <ion-label range-right style="cursor: pointer;">
+              <ion-icon name="more" (click)="customValue()"></ion-icon>
+          </ion-label> -->
+        </ion-range>
+    </ion-item>
+  </ion-list>
+
+  <div>
+    <ion-item>
+      <ion-label stacked>Card Number</ion-label>
+      <ion-input type="text" [(ngModel)]="card.number"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Expire Month</ion-label>
+      <ion-input type="text" [(ngModel)]="card.expMonth"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Expire Year</ion-label>
+      <ion-input type="text" [(ngModel)]="card.expYear"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>CVV</ion-label>
+      <ion-input type="text" [(ngModel)]="card.cvv"></ion-input>
+    </ion-item>
+
+    <button ion-button (tap)="submit()" full round> Donate Now </button>
+  </div>
+
+</ion-content>

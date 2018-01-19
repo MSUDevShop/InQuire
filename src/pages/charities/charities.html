@@ -21,7 +21,7 @@
 
   <ion-grid padding-top>
     <ion-row *ngIf="charities">
-      <ion-col col-4 text-center *ngFor="let charity of charities">
+      <ion-col col-4 text-center *ngFor="let charity of charities" (click)="donate(charity)">
         <img [src]="charity.photo" />
         <p> {{charity.name}} </p>
       </ion-col>

@@ -16,6 +16,7 @@ import { AnswerPage } from '../pages/answer/answer';
 import { InfluencerProfilePage } from '../pages/influencer-profile/influencer-profile';
 import { CharitiesPage } from '../pages/charities/charities';
 import { InfluencerQuestionsPage } from '../pages/influencer-questions/influencer-questions';
+import { DonatePage } from '../pages/donate/donate';
 
 //Apollo config
 import { provideClient } from './client';
@@ -29,7 +30,9 @@ import {RoundProgressModule} from 'angular-svg-round-progressbar';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpModule } from '@angular/http';
-
+// import { Braintree } from '@ionic-native/braintree';
+// import { HTTP } from '@ionic-native/http';
+import { Stripe } from '@ionic-native/stripe';
 import { Camera } from '@ionic-native/camera';
 import { UserProvider } from '../providers/user/user';
 import { FormBuilder } from '@angular/forms';
@@ -51,7 +54,8 @@ import { FlashCardComponent } from '../components/flash-card/flash-card';
     FlashCardComponent,
     InfluencerProfilePage,
     CharitiesPage,
-    InfluencerQuestionsPage
+    InfluencerQuestionsPage,
+    // DonatePage
   ],
   imports: [
     ApolloModule.withClient(provideClient),
@@ -83,6 +87,9 @@ import { FlashCardComponent } from '../components/flash-card/flash-card';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserProvider,
     FormBuilder,
+    Stripe
+    // HTTP
+    // Braintree
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
