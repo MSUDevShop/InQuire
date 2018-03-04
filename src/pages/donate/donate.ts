@@ -36,7 +36,7 @@ export class DonatePage {
      .then(token => {
        this.http.post('http://45.55.44.208:3000/charge', {cardToken: token, email: 'gugafflu@gmail.com', donateAmount: this.donateAmount}, {})
        .map(res => res.json())
-       .subscribe(data => {console.log(data)});
+       .subscribe(data => {alert(data)});
      })
      .catch(error => {
        let toast = this.toastCtrl.create({

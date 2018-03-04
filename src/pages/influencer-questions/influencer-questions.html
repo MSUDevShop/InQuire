@@ -19,6 +19,7 @@
     <ion-item-sliding>
       <ion-item *ngFor="let question of questionsToMe" (tap)="gotoAnswer(question)">
         <p text-wrap id="question" padding-bottom font-bold><strong>{{this.question.question}}?</strong></p>
+        <h5>Donating: <span id="value">${{question.value}}</span></h5>
         <h5>Asked by:<span id="asker"> {{question.user.fullName}}</span></h5>
       </ion-item>
       <ion-item-options side="left">
